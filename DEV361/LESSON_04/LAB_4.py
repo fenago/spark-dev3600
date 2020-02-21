@@ -16,7 +16,7 @@ Y = 10
 PdId = 11
 
 # Load SFPD data into an RDD
-sfpdRDD = sc.textFile("/user/user01/data/sfpd.csv").map(lambda line: line.split(","))
+sfpdRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/sfpd.csv").map(lambda line: line.split(","))
 
 # How do you see the first element of the inputRDD?
 sfpdRDD.first()
@@ -102,8 +102,8 @@ incByDists = sfpdRDD.map(lambda incident: (incident[PdDistrict], 1)).reduceByKey
 incByDists.partitions.size()
 
 # Create pairRDDs
-catAdd = sc.textFile("/user/user01/data/J_AddCat.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
-distAdd = sc.textFile("/user/user01/data/J_AddDist.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
+catAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
+distAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
 
 # Join and specify partitions, then check the number of partitions and the partitioner
 catJdist = catAdd.join(distAdd, 8)

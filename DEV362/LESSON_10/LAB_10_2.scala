@@ -15,7 +15,7 @@ def parseFlight(str: String): Flight = {
 }
 
 // Creating and RDD with the January 2014 data to be used for training the model
-val textRDD = sc.textFile("/user/user01/data/rita2014jan.csv")
+val textRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/rita2014jan.csv")
 val flightsRDD = textRDD.map(parseFlight).cache()
 flightsRDD.take(2)
  

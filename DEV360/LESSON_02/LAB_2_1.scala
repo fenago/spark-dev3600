@@ -17,7 +17,7 @@ val itemtype = 7
 val daystolive = 8
 
 // Load the data
-val auctionRDD = sc.textFile("/user/user01/data/auctiondata.csv").map(_.split(","))
+val auctionRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(_.split(","))
 
 // See the first element of the RDD
 auctionRDD.first()

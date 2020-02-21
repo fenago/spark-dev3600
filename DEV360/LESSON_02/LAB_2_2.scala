@@ -9,7 +9,7 @@ import sqlContext.implicits._
 case class Auctions(auctionid:String, bid:Float, bidtime:Float, bidder:String, bidrate:Int, openbid:Float, price:Float, itemtype:String, dtl:Int)
 
 // Load the data
-val inputRDD = sc.textFile("/user/user01/data/auctiondata.csv").map(_.split(","))
+val inputRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(_.split(","))
 
 // Map the input RDD to the case class
 val auctionRDD = inputRDD.map(a => Auctions(a(0), a(1).toFloat, a(2).toFloat, a(3), a(4).toInt, (5).toFloat, a(6).toFloat, a(7), a(8).toInt))

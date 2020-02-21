@@ -16,7 +16,7 @@ val Y = 10
 val PdId = 11
 
 // Load SFPD data into an RDD
-val sfpdRDD = sc.textFile("/user/user01/data/sfpd.csv").map(line => line.split(","))
+val sfpdRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/sfpd.csv").map(line => line.split(","))
 
 // How do you see the first element of the inputRDD?
 sfpdRDD.first()
@@ -46,8 +46,8 @@ sfpdRDD.map(incident => (incident(Category), 1)).reduceByKey((x , y) => x + y).m
 sfpdRDD.map(incident => (incident(PdDistrict), 1)).countByKey()
 
 // Load two datasets into separate pairRDDs with “address” being the key
-val catAdd = sc.textFile("/user/user01/data/J_AddCat.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
-val distAdd = sc.textFile("/user/user01/data/J_AddDist.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
+val catAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
+val distAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
 
 // List the incident category and district for those addresses that have both category and district information
 val catJdist = catAdd.join(distAdd)
@@ -102,8 +102,8 @@ val incByDists = sfpdRDD.map(incident => (incident(PdDistrict), 1)).reduceByKey(
 incByDists.partitions.size()
 
 // Create pairRDDs
-val catAdd = sc.textFile("/user/user01/data/J_AddCat.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
-val distAdd = sc.textFile("/user/user01/data/J_AddDist.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
+val catAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
+val distAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
 
 // Join and specify partitions, then check the number of partitions and the partitioner
 val catJdist = catAdd.join(distAdd, 8)

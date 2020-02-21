@@ -7,7 +7,7 @@ import pyspark.sql.functions as func
 sqlContext = SQLContext(sc)
 
 # Load the data
-inputRDD = sc.textFile("/user/user01/data/auctiondata.csv").map(lambda line: line.split(","))
+inputRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(lambda line: line.split(","))
 
 # Map the input RDD to the case class
 val auctionRDD = inputRDD.map(lambda p: Row(auctionid=p[0], bid=float(p[1]), bidtime=float(p[2]), bidder=p[3], bidrate=int(p[4]), openbid=float(p[5]), price=float(p[6]), itemtype=p[7], dtl=int(p[8])))

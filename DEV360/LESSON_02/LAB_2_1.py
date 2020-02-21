@@ -13,7 +13,7 @@ itemtype = 7
 daystolive = 8
 
 # Load the data
-auctionRDD = sc.textFile("/user/user01/data/auctiondata.csv").map(lambda line: line.split(","))
+auctionRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(lambda line: line.split(","))
 
 # See the first element of the RDD
 auctionRDD.first()

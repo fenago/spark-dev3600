@@ -42,8 +42,8 @@ object SensorStreamSQL extends Serializable {
     import sqlContext.implicits._
     import org.apache.spark.sql.functions._
 
-    val pumpRDD = sc.textFile("/user/user01/data/sensorvendor.csv").map(parsePumpInfo)
-    val maintRDD = sc.textFile("/user/user01/data/sensormaint.csv").map(parseMaint)
+    val pumpRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/sensorvendor.csv").map(parsePumpInfo)
+    val maintRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/sensormaint.csv").map(parseMaint)
     val maintDF = maintRDD.toDF()
     val pumpDF = pumpRDD.toDF()
     maintDF.registerTempTable("maint")

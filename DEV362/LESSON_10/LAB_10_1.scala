@@ -26,7 +26,7 @@ def parseRating(str: String): Rating = {
 }
 
 // Load the data
-val ratingText = sc.textFile("/user/user01/data/ratings.dat")
+val ratingText = sc.textFile("/home/jovyan/work/spark-dev3600/data/ratings.dat")
 val ratingsRDD = ratingText.map(parseRating).cache()
 
 // Count number of total ratings
@@ -40,8 +40,8 @@ val numMovies = ratingsRDD.map(_.product).distinct().count()
 println(s"Got $numRatings ratings from $numUsers users on $numMovies movies.")
 
 // Load the data into DataFrames
-val moviesDF= sc.textFile("/user/user01/data/movies.dat").map(parseMovie).toDF()  
-val usersDF = sc.textFile("/user/user01/data/users.dat").map(parseUser).toDF() 
+val moviesDF= sc.textFile("/home/jovyan/work/spark-dev3600/data/movies.dat").map(parseMovie).toDF()  
+val usersDF = sc.textFile("/home/jovyan/work/spark-dev3600/data/users.dat").map(parseUser).toDF() 
 val ratingsDF = ratingsRDD.toDF()
 ratingsDF.registerTempTable("ratings")
 moviesDF.registerTempTable("movies")

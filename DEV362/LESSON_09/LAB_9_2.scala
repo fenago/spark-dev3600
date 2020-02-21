@@ -11,7 +11,7 @@ def parseFlight(str: String): Flight = {
   Flight(line(0), line(1), line(2), line(3), line(4).toInt, line(5).toLong, line(6), line(7).toLong, line(8), line(9).toDouble, line(10).toDouble, line(11).toDouble, line(12).toDouble, line(13).toDouble, line(14).toDouble, line(15).toDouble, line(16).toInt)
 }
 
-val textRDD = sc.textFile("/user/user01/data/rita2014jan.csv")
+val textRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/rita2014jan.csv")
 val flightsRDD = textRDD.map(parseFlight).cache()
 val airports = flightsRDD.map(flight => (flight.org_id, flight.origin)).distinct()
 airports.take(1)

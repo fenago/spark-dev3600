@@ -16,7 +16,7 @@ itemtype = 7
 daystolive = 8
 
 # Load the data
-auctionRDD = sc.textFile("/user/user01/data/auctiondata.csv").map(lambda line: line.split(",")).cache()
+auctionRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(lambda line: line.split(",")).cache()
 
 # Total number of bids across all auctions
 totalbids = auctionRDD.count()

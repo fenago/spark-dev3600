@@ -7,7 +7,7 @@ import pyspark.sql.functions as func
 sqlContext = SQLContext(sc)
 
 # Load the data
-sfpdRDD = sc.textFile("/user/user01/data/sfpd.csv").map(lambda inc: inc.split(","))
+sfpdRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/sfpd.csv").map(lambda inc: inc.split(","))
 
 # Infer the schema and register the DataFrame as a table
 sfpdSchema=sfpdRDD.map(lambda inc: Row(incidentnum=inc[0], category=inc[1], description=inc[2], dayofweek=inc[3], date=inc[4], time=inc[5], pddistrict=inc[6], resolution=inc[7], address=inc[8], X=float(inc[9]), Y=float(inc[10]), pdid=inc[11]))

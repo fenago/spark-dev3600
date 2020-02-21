@@ -9,7 +9,7 @@ import sqlContext.implicits._
 case class Incidents(incidentnum:String, category:String, description:String, dayofweek:String, date:String, time:String, pddistrict:String, resolution:String, address:String, X:Float, Y:Float, pdid:String)
 
 // Load the data
-val sfpdRDD = sc.textFile("/user/user01/data/sfpd.csv").map(inc => inc.split(","))
+val sfpdRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/sfpd.csv").map(inc => inc.split(","))
 
 // Infer the schema and register the DataFrame as a table
 val sfpdCase=sfpdRDD.map(inc => Incidents(inc(0), inc(1), inc(2), inc(3), inc(4), inc(5), inc(6), inc(7), inc(8), inc(9).toFloat, inc(10).toFloat, inc(11)))
