@@ -9,7 +9,7 @@ object AuctionsApp {
     val conf = new SparkConf().setAppName("AuctionsApp")
     val sc = new SparkContext(conf)
     val usrhome = System.getenv("HOME")
-    val aucFile = usrhome.concat("/data/auctiondata.csv")
+    val aucFile = usrhome.concat("/home/jovyan/work/spark-dev3600/data/auctiondata.csv")
 
     // Map input variables                
     val auctionid = 0

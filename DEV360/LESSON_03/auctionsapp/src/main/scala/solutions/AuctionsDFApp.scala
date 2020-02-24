@@ -14,7 +14,7 @@ object AuctionsDFApp {
     val sc = new SparkContext(conf)
     val sqlContext = new SQLContext(sc)
     val usrhome = System.getenv("HOME")
-    val aucFile = usrhome.concat("/data/auctiondata.csv")
+    val aucFile = usrhome.concat("/home/jovyan/work/spark-dev3600/data/auctiondata.csv")
     import sqlContext.implicits._
     import sqlContext._
 
