@@ -16,7 +16,7 @@ def parseSensor(str: String): Sensor = {
 val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
 // Get sensor readings with filter criteria
-val textRDD = sc.textFile("/user/user01/sparkstreaminglab/data/sensordata.csv")
+val textRDD = sc.textFile("/home/jovyan/work/spark-dev3600/sparkstreaminglab/data/sensordata.csv")
 val sensorRDD= textRDD.map(parseSensor)
 val alertRDD = sensorRDD.filter(sensor => sensor.psi < 5.0)
 alertRDD.take(1).foreach(println)

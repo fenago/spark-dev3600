@@ -6,4 +6,4 @@ technician STRING, description STRING)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ","
 
 
-STORED AS TEXTFILE LOCATION "/user/user01/sensormaint.csv";
+STORED AS TEXTFILE LOCATION "/home/jovyan/work/spark-dev3600/sensormaint.csv";

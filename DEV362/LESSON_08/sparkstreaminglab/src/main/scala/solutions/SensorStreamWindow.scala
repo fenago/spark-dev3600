@@ -42,7 +42,7 @@ object SensorStreamWindow extends Serializable {
     val ssc = new StreamingContext(sc, Seconds(2))
 
     // Parse the lines of data into sensor objects
-    val textDStream = ssc.textFileStream("/user/user01/stream")
+    val textDStream = ssc.textFileStream("/home/jovyan/work/spark-dev3600/stream")
     val sensorDStream = textDStream.map(parseSensor)
 
     sensorDStream.window(Seconds(6), Seconds(2)).foreachRDD { rdd =>

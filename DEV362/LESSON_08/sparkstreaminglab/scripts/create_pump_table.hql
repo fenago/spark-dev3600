@@ -6,4 +6,4 @@ dateinservice STRING, vendor STRING, longitude FLOAT, latitude FLOAT)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ","
 
 
-STORED AS TEXTFILE LOCATION "/user/user01/sensorvendor.csv";
+STORED AS TEXTFILE LOCATION "/home/jovyan/work/spark-dev3600/sensorvendor.csv";

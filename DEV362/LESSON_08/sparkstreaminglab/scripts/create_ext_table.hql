@@ -13,4 +13,4 @@ CREATE EXTERNAL TABLE sensor
         cf1:flo,cf1:sedPPM,cf1:psi,cf1:chlPPM"
         )
 
-TBLPROPERTIES("hbase.table.name" = "/user/user01/sensor");
+TBLPROPERTIES("hbase.table.name" = "/home/jovyan/work/spark-dev3600/sensor");

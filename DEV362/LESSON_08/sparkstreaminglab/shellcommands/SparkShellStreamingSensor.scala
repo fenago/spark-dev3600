@@ -11,7 +11,7 @@ case class Sensor(resid: String, date: String, time: String, hz: Double, disp: D
 val ssc = new StreamingContext(sc, Seconds(2))
 
 // Create input stream from the "stream" directory
-val textDStream = ssc.textFileStream("/user/user01/stream") 
+val textDStream = ssc.textFileStream("/home/jovyan/work/spark-dev3600/stream") 
 textDStream.print()
 
 // Apply processing to each RDD in the input stream

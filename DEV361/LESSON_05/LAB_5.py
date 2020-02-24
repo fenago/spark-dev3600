@@ -30,7 +30,7 @@ top3CatSQL=sqlContext.sql("SELECT category, count(incidentnum) AS inccount FROM 
 top3CatSQL.show()
 
 # Save the top 10 resolutions to a JSON file
-top10ResSQL.toJSON.saveAsTextFile("/user/user01/output")
+top10ResSQL.toJSON.saveAsTextFile("/home/jovyan/work/spark-dev3600/output")
 
 # Define and register UDF to get year from a date string
 sqlContext.registerFunction("getyear", lambda x: x[-2:])
