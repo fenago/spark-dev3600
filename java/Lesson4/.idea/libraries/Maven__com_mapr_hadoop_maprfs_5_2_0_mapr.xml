@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.mapr.hadoop:maprfs:5.2.0-mapr">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mapr/hadoop/maprfs/5.2.0-mapr/maprfs-5.2.0-mapr.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mapr/hadoop/maprfs/5.2.0-mapr/maprfs-5.2.0-mapr-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mapr/hadoop/maprfs/5.2.0-mapr/maprfs-5.2.0-mapr-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
