@@ -1,0 +1,19 @@
+// Lab 2.3b: Word Count Using Datasets
+
+// 1. Launch the interactive shell:
+/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master yarn
+
+// 2. Load data the Dataset using SparkSession’s read.text method and assign type as string.
+val dataDS = spark.read.text("/user/user01/Data/wordcount.txt").as[String]
+
+// 3. Use Datset’s flatmap method to split lines into words. Use "\\s+" (spaces) as word separator.
+val wordsDS = dataDS.flatMap(value => value.split("\\s+"))
+
+// 4. Change case of all words to lowercase using toLowerCase method and then group them using groupByKey.
+val groupDS = wordsDS.groupByKey(_.toLowerCase)
+
+// 5. Count each word in the group in the count method.
+val wordCountDS = groupDS.count()
+
+// 6. Display the results using show or collect methods.
+wordsDS.show()

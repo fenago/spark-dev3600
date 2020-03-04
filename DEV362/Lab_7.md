@@ -1,6 +1,6 @@
 <img align="right" src="../logo-small.png">
 
-# Lab :
+# Lab : Use Apache Spark GraphX to Analyze Flight Data
 
 #### Pre-reqs:
 - Google Chrome (Recommended)
@@ -8,163 +8,72 @@
 #### Lab Environment
 Notebooks are ready to run. All packages have been installed. There is no requirement for any setup.
 
+
+
 **Note:** Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
 All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
 
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 
+<h4><span style="color:red;">Analyzing a Simple Flight Example with GraphX</span></h4>
 
-<h4><span style="color:red;">Gradient descent learning with multiple inputs </span></h4>
-
-##### Run Notebook
-Click notebook `.ipynb` in jupterLab UI and run jupyter notebook.
-
-
-Lesson 9: Use Apache Spark GraphX
-to Analyze Flight Data
-Lab 9.1: Analyzing a Simple Flight Example with GraphX
-Estimated time to complete: 15 minutes
-
-Scenario
+### Scenario
 In this activity, you will use GraphX to analyze flight data. As a starting simple example, we will analyze
 three flights. For each flight, we have the following information:
-Originating Airport
 
-Destination Airport
-
-Distance
-
-SFO
-
-ORD
-
-1800 miles
-
-ORD
-
-DFW
-
-800 miles
-
-DFW
-
-SFO
-
-1400 miles
+![](..\images\14.png)
 
 In this scenario, we are going to represent the airports as vertices and routes as edges. For our graph, we
 will have three vertices, each representing an airport. The distance between the airports is a route
 property, as shown below:
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
+![](..\images\92-258.png)
 
-Vertex Table for Airports
-ID
+![](..\images\15.png)
 
-Property
+**Objectives**
 
-1
-
-SFO
-
-2
-
-ORD
-
-3
-
-DFW
-
-Edges Table for Routes
-SrcId
-
-DestId
-
-Property
-
-1
-
-2
-
-1800
-
-2
-
-3
-
-800
-
-3
-
-1
-
-1400
-
-Objectives
-•
-
-Define Vertices
-
-•
-
-Define Edges
-
-•
-
-Create Graph
-
-•
-
-Launch the Spark Interactive Shell
+- Define Vertices
+- Define Edges
+- Create Graph
+- Launch the Spark Interactive Shell
 
 In this activity, we will use the Spark Interactive Shell.
-1. SSH into your MapR Sandbox or cluster node, as instructed in the Connect to MapR Sandbox or
-Cluster document. For example:
-$ ssh user01@<IP address> -p <port>
-2. To launch the Interactive Shell, run the following command at the command line:
+- To launch the Interactive Shell, run the following command at the command line:
 spark-shell --master local[2]
 
-Define Vertices
+## Define Vertices
 Open the file 09_Graphx_Lab_Shell_1.scala in your favorite editor. All the shell commands are
 there, or you can copy paste from this document.
 First we will import the GraphX packages.
 
-L9-2
-
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
-
 In the code boxes, comments are in green and output is in purple.
+
+```
 import org.apache.spark._
 
 import org.apache.spark.rdd.RDD
 
 // import classes required for using GraphX
 import org.apache.spark.graphx._
+```
 
 We define airports as vertices. Vertices have an ID and can have properties or attributes associated with
 them. Each vertex consists of:
-•
+-Vertex ID -> id (Long)
 
-Vertex ID à id (Long)
-
-•
-
-Vertex Property à name (String)
+-Vertex Property -> name (String)
 
 Vertex Table for Airports
-ID
 
-Property(V)
+![](..\images\16.png)
 
-1
-
-SFO
 
 We define an RDD with the above properties that is then used for the vertices.
-// create
 
-vertices RDD with ID and Name
+```
+// create vertices RDD with ID and Name
 
 val vertices=Array((1L, ("SFO")),(2L, ("ORD")),(3L,("DFW")))
 val vRDD= sc.parallelize(vertices)
@@ -173,44 +82,24 @@ vRDD.take(1)
 // Array((1,SFO))
 // Defining a default vertex called nowhere
 val nowhere = "nowhere"
+```
 
-Define Edges
+## Define Edges
 Edges are the routes between airports. An edge must have a source, a destination, and can have
 properties. In our example, an edge consists of:
-•
 
-Edge origin ID à src (Long)
+- Edge origin ID -> src (Long)
+- Edge destination ID -> dest (Long)
+- Edge property distance -> distance (Long)
 
-•
-
-Edge destination ID à dest (Long)
-
-•
-
-Edge property distance à distance (Long)
-
-L9-3
-
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 Edges Table for Routes
-srcid
 
-destid
-
-Property(E)
-
-1
-
-12
-
-1800
+![](..\images\17.png)
 
 We define an RDD with the above properties that is then used for the edges. The edge RDD has the form
 (src id, dest id, distance).
-// create
-
-routes
+// create routes
 
 RDD with srcid, destid , distance
 
@@ -240,9 +129,7 @@ graph.edges.collect.foreach(println)
 
 // Edge(3,1,1400)
 
-L9-4
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 1. How many airports are there?
 // How many airports?
@@ -287,9 +174,7 @@ Distance 1800 from SFO to ORD.
 Distance 1400 from DFW to SFO.
 Distance 800 from ORD to DFW.
 
-L9-5
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 Lab 9.2: Analyze Real Flight Data with GraphX
 Estimated time to complete: 25 minutes
@@ -402,9 +287,7 @@ Distance
 
 2475
 
-L9-6
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 In this scenario, we are going to represent the airports as vertices and routes as edges. We are interested
 in visualizing airports and routes and would like to see the number of airports that have departures or
@@ -414,29 +297,28 @@ Set up for the Lab
 If you have not already downloaded the files DEV3600_LAB_DATA.zip and DEV3600_LAB_FILES.zip
 to your machine, and copied the zipped data to your Sandbox or cluster, do so now.
 
-Objectives
-•
+**Objectives**
 
-Define Vertices
+-Define Vertices
 
-•
+-Define Edges
 
-Define Edges
-
-•
-
-Create Graph
+-Create Graph
 
 Launch the Spark Interactive Shell
 In this activity we will use the Spark Interactive Shell. The Spark Interactive Shell is available in Scala or
 Python.
 
-Note: All instructions here are for Scala.
+
+
+**Note:** All instructions here are for Scala.
 
 SSH into your MapR Sandbox or cluster node. To launch the Interactive Shell, run the following command
 at the command line:
 spark-shell --master local[2]
-Note: To find the Spark version:
+
+
+**Note:** To find the Spark version:
 ls /opt/mapr/spark
 To quit the Scala Interactive Shell, use the command:
 exit
@@ -445,9 +327,7 @@ Define Vertices
 Open the file 09_Graphx_Lab_Shell_2.scala in your favorite editor. All the shell commands are
 there, or you can copy paste from this document.
 
-L9-7
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 First we will import the GraphX packages. In the code boxes, comments are in green and output is in
 blue.
@@ -485,22 +365,18 @@ Below we load the data from the CSV file into a Resilient Distributed Dataset (R
 transformations and actions, the first() action returns the first element in the RDD.
 // load the data into an RDD
 
-val textRDD = sc.textFile("/user/user01/data/rita2014jan.csv")
+val textRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/rita2014jan.csv")
 
 // MapPartitionsRDD[1] at textFile
 
 // parse the RDD of csv lines into an RDD of flight classes
 val flightsRDD = textRDD.map(parseFlight).cache()
 
-L9-8
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 We define airports as vertices. Vertices can have properties or attributes associated with them. Each
 vertex has the following property:
-•
-
-Airport name (String)
+-Airport name (String)
 
 Vertex Table for Airports
 ID
@@ -512,9 +388,7 @@ Property(V)
 ATL
 
 We define an RDD with the above properties that is then used for the Vertexes .
-// create
-
-airports RDD with ID and Name
+// create airports RDD with ID and Name
 
 val airports = flightsRDD.map(flight => (flight.org_id,
 flight.origin)).distinct
@@ -533,21 +407,13 @@ name) }.collect.toList.toMap
 Define Edges
 Edges are the routes between airports. An edge must have a source, a destination, and can have
 properties. In our example, an edge consists of:
-•
+- Edge origin ID -> src (Long)
 
-Edge origin ID à src (Long)
+- Edge destination ID -> dest (Long)
 
-•
+- Edge property distance -> distance (Long)
 
-Edge destination ID à dest (Long)
 
-•
-
-Edge property distance à distance (Long)
-
-L9-9
-
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 Edges Table for Routes
 srcid
@@ -564,9 +430,7 @@ Property(E)
 
 We define an RDD with the above properties that is then used for the Edges. The edge RDD has the form
 (src id, dest id, distance).
-// create
-
-routes
+// create routes
 
 RDD with srcid, destid , distance
 
@@ -575,9 +439,7 @@ flight.dist)).distinctdistinct
 routes.take(2)
 
 // Array(((14869,14683),1087), ((14683,14771),1482))
-// create
-
-edges RDD with srcid, destid , distance
+// create edges RDD with srcid, destid , distance
 
 val edges = routes.map {
 
@@ -605,9 +467,7 @@ graph.edges.take(2)
 
 Array(Edge(10135,10397,692), Edge(10135,13930,654))
 
-L9-10
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 1. How many airports are there?
 // How many airports?
@@ -644,7 +504,7 @@ graph.triplets.take(3).foreach(println)
 // Define a reduce operation to compute the highest degree
 vertex
 
-def max(a: (VertexId, Int), b: (VertexId, Int)): (VertexId, Int)
+def max(**A:** (VertexId, Int), b: (VertexId, Int)): (VertexId, Int)
 = {
 }
 
@@ -657,9 +517,7 @@ val maxInDegree: (VertexId, Int)
 maxInDegree: (org.apache.spark.graphx.VertexId, Int) =
 (10397,152)
 
-L9-11
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 val maxOutDegree: (VertexId, Int) = graph.outDegrees.reduce(max)
 maxOutDegree: (org.apache.spark.graphx.VertexId, Int) =
@@ -693,9 +551,7 @@ maxout.foreach(println)
 (13930,(146,ORD))
 (11298,(143,DFW))
 
-L9-12
 
-Lesson 9: Use Apache Spark GraphX to Analyze Flight Data
 
 7. What are the top 10 flights from airport to airport?
 // get top 10 flights airport to airport
@@ -709,4 +565,3 @@ There were 4983 flights from JFK to HNL
 There were 4983 flights from HNL to JFK.
 There were 4963 flights from EWR to HNL
 
-L9-13

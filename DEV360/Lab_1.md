@@ -1,6 +1,6 @@
 <img align="right" src="../logo-small.png">
 
-# Lab :
+# Lab : Load and Inspect Data
 
 #### Pre-reqs:
 - Google Chrome (Recommended)
@@ -14,149 +14,61 @@ All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use
 
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 
-<h4><span style="color:red;"> </span></h4>
+<h4><span style="color:red;">Lab Overview </span></h4>
 
-
-DEV 360 – Apache Spark Essentials
-Part of the DEV 3600 curriculum
-
-Lesson 2: Load and Inspect Data
-Lab Overview
 In this activity, you will load data into Apache Spark and inspect the data using the Spark interactive shell.
 This lab consists of two sections. In the first section, we use the SparkContext method, textFile, to
 load the data into a Resilient Distributed Dataset (RDD). In the second section, we load data into a
 DataFrame.
 
-Scenario
+### Scenario
 Our dataset is a CSV file that consists of online auction data. Each auction has an auction ID associated
 with it and can have multiple bids. Each row represents a bid. For each bid, we have the following
 information:
-Column
 
-Type
-
-Description
-
-aucid
-
-String
-
-Auction ID
-
-bid
-
-Float
-
-Bid amount
-
-bidtime
-
-Float
-
-Time of bid from start of auction
-
-bidder
-
-String
-
-The bidder’s userid
-
-Bidrate
-
-Int
-
-The bidder’s rating
-
-openbid
-
-Float
-
-Opening price
-
-Price
-
-Float
-
-Final price
-
-Itemtype
-
-String
-
-Item type
-
-dtl
-
-Int
-
-Days to live
+![](..\images\1.png)
 
 We load this data into Spark first using RDDs and then using Spark DataFrames.
 In both activities, we will use the Spark Interactive Shell.
 
-Set up for the Lab
-Download the files DEV3600_LAB_DATA.zip and DEV3600_LAB_FILES.zip to your machine.
-1. Copy DEV3600_LAB_DATA.zip file to your Sandbox or cluster user directory, as instructed in the
-Connect to MapR Sandbox or Cluster document.
-$ scp DEV3600_LAB_DATA.zip <username>@node-ip:/user/<username>/.
-
-Lesson 2: Load and Inspect Data
-
-For example, if you are using the VirtualBox Sandbox, the command may look something like this, if
-you are in the ms-lab target folder where the jar file gets built:
-$ scp -P 2222 DEV3600Data.zip user01@127.0.0.1:/user/user01/.
-
-Note: These instructions are specific to the MapR Sandbox. If you are in a live classroom,
-your instructor will give you the location where you should upload the lab files.
-
-2. Login into the cluster as your user.
-3. Navigate to your user’s home directory.
-$ cd /user/<username>
-4. Unzip DEV3600_LAB_DATA.zip and verify that the data exists.
-$ unzip DEV3600_LAB_DATA.zip
-$ ls /user/<username>/data
 
 You should see the data files there (auctiondata.csv, sfpd.csv, etc.).
 
-Lab 2.1: Load and Inspect Data with Spark Interactive Shell
-Estimated time to complete: 30 minutes
+### Lab 2.1: Load and Inspect Data with Spark Interactive Shell
 
-Objectives
-•
+**Objectives**
 
-Launch the Spark interactive shell
+-Launch the Spark interactive shell
 
-•
+-Load data into Spark
 
-Load data into Spark
+-Use transformations and actions to inspect the data
 
-•
-
-Use transformations and actions to inspect the data
-
-Lab 2.1.1: Launch the Spark Interactive Shell
+### Lab 2.1.1: Launch the Spark Interactive Shell
 The Spark interactive shell is available in Scala or Python.
-Note: All instructions here are for Scala.
+
+**Note:** All instructions here are for Scala.
+
 1. To launch the Interactive Shell, at the command line, run the following command:
-$ /opt/mapr/spark/<sparkversion>/bin/spark-shell --master local[2]
+
+`spark-shell --master local[2]`
 
 
-L2-2
+**Note:** To quit the Scala Interactive shell, use the command
+> `exit`
 
-Lesson 2: Load and Inspect Data
-
-Note: To find the Spark version:
-$ ls /opt/mapr/spark
-Note: To quit the Scala Interactive shell, use the command
-> exit
-Note: There are four modes for running Spark. For training purposes, we are using local
+**Note:** There are four modes for running Spark. For training purposes, we are using local
 mode. When you are running bigger applications, you should use a mode with a multiple VMs.
 
-Lab 2.1.2: Load Data into Apache Spark
+### Lab 2.1.2: Load Data into Apache Spark
+
 The data we want to load is in the auctiondata.csv file. To load the data, we are going to use the
 SparkContext method textFile. The SparkContext is available in the interactive shell as the
 variable sc. We also want to split the file by the separator “,”.
+
 1. We define the mapping for our input variables:
+
+```
 val aucid = 0
 val bid = 1
 
@@ -169,25 +81,26 @@ val price = 6
 
 val itemtype = 7
 val dtl = 8
+```
 
 2. To load data into Spark, at the Scala command prompt:
+
+```
 val auctionRDD =
-sc.textFile("/user/<username>/data/auctiondata.csv").map(_.split(","))
-Caution! If you do not have the correct path to the file auctiondata.csv, you will get an
+sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(_.split(","))
+```
+
+<span style="color:red;">Caution!</span> If you do not have the correct path to the file auctiondata.csv, you will get an
 error when you perform any actions on the RDD.
 
-Lab 2.1.3: Inspect the Data
-Now that we have loaded the data into Spark, let’s learn a little more about the data. Find answers to the
+### Lab 2.1.3: Inspect the Data
+Now that we have loaded the data into Spark, let’s learn a little more about the data. Find <h4><span style="color:red;">Answers</span></h4>
+ to the
 questions listed below.
-Note: For a review on RDD transformations and Actions refer to the Appendix.
-
-
-L2-3
-
-Lesson 2: Load and Inspect Data
 
 What transformations and actions would you use in each case? Complete the command with the
 appropriate transformations and actions.
+
 1. How do you see the first element of the inputRDD?
 auctionRDD.____________________
 2. What do you use to see the first five elements of the RDD?
@@ -204,8 +117,10 @@ ___________________________________________________________________
 6. What is the total number of bids per item type?
 val bids_itemtype = auctionRDD.____________________________________
 ___________________________________________________________________
+
 We want to calculate the maximum, minimum, and average number of bids among all the auctioned
 items.
+
 7. Create an RDD that contains total bids for each auction.
 val bidsAuctionRDD = auctionRDD.___________________________________
 ___________________________________________________________________
@@ -220,78 +135,88 @@ val avgbids = bidsItemRDD._________________________________________
 ___________________________________________________________________
 
 
-L2-4
 
-Lesson 2: Load and Inspect Data
-
-Note: Find the answers and the solutions to the questions at the end of Lab 2. The solutions in
+**Note:** Find the <h4><span style="color:red;">Answers</span></h4>
+ and the solutions to the questions at the end of Lab 2. The solutions in
 Scala and Python are provided. You can also refer to the files Lab2_1.txt (for Scala) or
 Lab2_1_py.txt (for Python).
 
-Lab 2.2: Use DataFrames to load data into Spark
+### Lab 2.2: Use DataFrames to load data into Spark
+
 Estimated time to complete: 30 minutes
 
-Objectives
-•
+**Objectives**
 
-Load data into Spark DataFrames using the Interactive Shell
+-Load data into Spark DataFrames using the Interactive Shell
 
-•
+-Explore the data in the DataFrame
 
-Explore the data in the DataFrame
-Note: For a review on DataFrame actions and functions, refer to the Appendix.
+**Note:** For a review on DataFrame actions and functions, refer to the Appendix.
 
-Lab 2.2.1: Load the data
+### Lab 2.2.1: Load the data
 There are different ways to load data into a Spark DataFrame. We use the same data that we used
 before: auctiondata.csv. We load it into an RDD and then convert that RDD into a DataFrame. We
 will use reflection to infer the schema. The entry point for DataFrames is SQLContext. To create a
 basic SQLContext, we need a SparkContext. In the interactive shell, we already have the
 SparkContext as the variable sc.
+
 1. Launch the interactive shell:
-$ /opt/mapr/spark/<sparkversion>/bin/spark-shell --master local[2]
+`spark-shell --master local[2]`
+
 2. Create a SQLContext:
-val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+`val sqlContext = new org.apache.spark.sql.SQLContext(sc)`
+
 Since we are going to convert an RDD implicitly to a DataFrame:	
-import sqlContext.implicits._
+
+`import sqlContext.implicits._`
 
 3. The Scala interface for Spark SQL supports automatically converting an RDD containing case
 classes to a DataFrame. The case class defines the schema of the table. The names of the
 arguments to the case class are read using reflection and become the names of the columns. In this
 step, we will define the schema using the case class. Refer to the table describing the auction data in
 the Scenario section.
+
+```
 case class Auctions(aucid:String, bid:Float,
 bidtime:Float, bidder:String,bidrate:Int,
 openbid:Float,price:Float, itemtype:String,dtl:Int)
+```
 
-
-L2-5
-
-Lesson 2: Load and Inspect Data
 
 4. Create an RDD inputRDD using sc.textFile to load the data from
-/user/<username>/data/aucitondata.csv. Also, make sure that you split the input file based
+**/home/jovyan/work/spark-dev3600/data/aucitondata.csv**. Also, make sure that you split the input file based
 on the separator.
+
+```
 val inputRDD =
 sc.textFile("/<path to file>/auctiondata.csv") .map(_.split(","))
+```
+
 5. Now, map the inputRDD to the case class.
+
+```
 val auctionsRDD = inputRDD.map(a=>Auctions(a(0),
 a(1).toFloat,a(2).toFloat,a(3),a(4).toInt,
 a(5).toFloat,a(6).toFloat,a(7),a(8).toInt))
+```
 
 6. We are going to convert the RDD into a DataFrame and register it as a table. Registering it as a
-
 temporary table allows us to run SQL statements using the SQL methods provided by sqlContext.	
+
+```
 val auctionsDF = auctionsRDD.toDF()
 
 //registering the DataFrame as a temporary table
 auctionsDF.registerTempTable("auctionsDF")
+```
 
 7. What action can you use to check the data in the DataFrame?
 auctionsDF.___________________________
 8. What DataFrame function could you use to see the schema for the DataFrame?
 AuctionsDF.___________________________
 
-Lab 2.2.2: Inspect the Data
+
+### Lab 2.2.2: Inspect the Data
 We are going to query the DataFrame to gain more insight into our data.
 1. What is the total number of bids?
 auctionsDF.________________________________________________________
@@ -301,77 +226,11 @@ auctionsDF.________________________________________________________
 auctionsDF.________________________________________________________
 
 
-L2-6
-
-Lesson 2: Load and Inspect Data
 
 4. We would like a count of bids per auction and the item type (as shown below). How would you do
 this? (HINT: Use groupBy.)
-itemtype
 
-aucid
-
-count
-
-palm
-
-3019326300
-
-10
-
-xbox
-
-8213060420
-
-22
-
-palm
-
-3024471745
-
-5
-
-xbox
-
-8213932495
-
-9
-
-cartier
-
-1646573469
-
-15
-
-palm
-
-3014834982
-
-20
-
-palm
-
-3025885755
-
-7
-
-palm
-
-3016427640
-
-19
-
-xbox
-
-8214435010
-
-35
-
-cartier
-
-1642185637
-
-9
+![](..\images\2.png)
 
 auctionsDF.________________________________________________________
 ___________________________________________________________________
@@ -380,27 +239,15 @@ auctionsDF.________________________________________________________
 ___________________________________________________________________
 6. For each auction item and item type, we want the following information (HINT: Use groupBy and
 agg):
-§
 
-Minimum bid
-
-§
-
-Maximum bid
-
-§
-
-Average bid
+- Minimum bid
+- Maximum bid
+- Average bid
 
 auctionsDF.________________________________________________________
 ___________________________________________________________________
 7. What is the number of auctions with final price greater than 200?
 auctionsDF.________________________________________________________
-
-
-L2-7
-
-Lesson 2: Load and Inspect Data
 
 8. We want to run some basic statistics on all auctions that are of type xbox. What is one way of doing
 this? (HINT: We have registered the DataFrame as a table so we can use SQL queries. The result
@@ -411,12 +258,11 @@ ___________________________________________________________________
 xboxes._______________________________
 
 
-L2-8
 
-Lesson 2: Load and Inspect Data
+<h4><span style="color:red;">Answers</span></h4>
 
-Answers
-Lab 2.1.3
+**Lab 2.1.3**
+
 3. 10654
 4. 627
 5. 3
@@ -425,48 +271,25 @@ Lab 2.1.3
 9. 1
 10. 16
 
-Lab 2.2.2
+**Lab 2.2.2**
+
 1. 10654
 2. 627
 3. 3
 5. MIN(count) =1; AVG(count)= 16.992025518341308; MAX(count) = 75
-6.
-
-
-L2-9
-
-Lesson 2: Load and Inspect Data
+6. 
+    ![](..\images\8.png)
 
 7. 7685
 8. Statistics:
-Summary
 
-Price
+    ![](..\images\4.png)
 
-count
 
-2784
-
-mean
-
-144.2759409416681
-
-stddev
-
-72.93472662124582
-
-min
-
-31.0
-
-max
-
-501.77
-
-Solutions
-Lab 2.1.3 – Scala
-Note: Solutions are also in the file Lab2_1.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab2_1.txt from which you can copy and paste into the
 Interactive shell.
+
+
 1. auctionRDD.first
 2. auctionRDD.take(5)
 3. val totbids = auctionRDD.count()
@@ -480,21 +303,20 @@ Interactive shell.
 .map(x=>x._2).reduce((x,y)=>Math.max(x,y))
 9. val minbids = bids_auctionRDD.map(x=>x._2)
 .reduce((x,y)=>Math.min(x,y))
-10.
-
-val avgbids = totbids/totitems
+10. val avgbids = totbids/totitems
 
 
-L2-10
+# Lab 2.1.3 – Python
 
-Lesson 2: Load and Inspect Data
-
-Lab 2.1.3 – Python
 To launch the Python shell,
-$ opt/mapr/spark/spark-<version>/bin/pyspark
-Note: Solutions are also in the file Lab2_1_py.txt from which you can copy and paste into the
+$ `pyspark`
+
+**Note:** Solutions are also in the file Lab2_1_py.txt from which you can copy and paste into the
 Interactive shell.
+
 To map input variables:
+
+```
 auctioned = 0
 bid = 1
 bidtime = 2
@@ -504,9 +326,15 @@ openbid = 5
 price = 6
 itemtype = 7
 dtl = 8
+```
+
 To load the file:
+
+```
 auctionRDD=sc.textFile("/path/to/file/auctiondata.csv").map(lambda
 line:line.split(","))
+```
+
 1. auctionRDD.first
 2. auctionRDD.take(5)
 3. totbids = auctionRDD.count()
@@ -523,23 +351,17 @@ print bids_itemtype
 x:(x[aucid],1)).reduceByKey(lambda x,y:x+y)
 bids_auctionRDD.take(5) #just to see the first 5 elements
 8. maxbids = bids_auctionRDD.map(lambda x:x[bid]).reduce(max)
-
-
-L2-11
-
-Lesson 2: Load and Inspect Data
-
 print maxbids
 9. minbids = bids_auctionRDD.map(lambda x:x[bid]).reduce(min)
 print minbids
-10.
-
-avgbids = totbids/totitems
+10. avgbids = totbids/totitems
 print avgbids
 
-Lab 2.2.2 – Scala
-Note: Solutions are also in the file Lab2_2.txt from which you can copy and paste into the
+# Lab 2.2.2 – Scala
+
+**Note:** Solutions are also in the file Lab2_2.txt from which you can copy and paste into the
 Interactive shell.
+
 1. val totalbids = auctionsDF.count()
 2. val totalauctions = auctionsDF.select("aucid").distinct.count
 3. val itemtypes = auctionsDF.select("itemtype").distinct.count
@@ -555,9 +377,10 @@ count("price")).show
 FROM auctionsDF WHERE itemtype='xbox'")
 To compute statistics on the price column:
 xboxes.select("auctionid", "price").distinct.describe("price").show
-Note: Solutions for Python can be found in the file Lab2_2_py.txt from which you can copy
+
+**Note:** Solutions for Python can be found in the file Lab2_2_py.txt from which you can copy
 and paste into the Interactive shell.
 
 
-L2-12
+
 

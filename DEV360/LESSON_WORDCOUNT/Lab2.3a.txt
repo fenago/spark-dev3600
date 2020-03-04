@@ -1,0 +1,19 @@
+// Lab 2.3a: Load Data and Create a Dataset Using Reflection
+
+// 1. Launch the shell
+/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master yarn
+
+// 2. Load the data 
+val sfpdDF = spark.read.format("csv").option("inferSchema", true).load("/user/user01/Data/sfpd.csv").toDF("incidentnum", "category", "description", "dayofweek", "date", "time", "pddistrict", "resolution", "address", "X", "Y", "pdid")
+
+// 3. Import required classes
+import spark.implicits._
+
+// 4. Define case class
+case class Incidents(incidentnum:String, category:String, description:String, dayofweek:String, date:String, time:String, pddistrict:String, resolution:String, address:String, X:Double, Y:Double, pdid:String)
+
+// 5. Convert the DataFrame into an Dataset of Incidents using the as method
+val sfpdDS = sfpdDF.as[Incidents]
+
+// 6. Register the Dataset as a table called sfpd:
+sfpdDS.createOrReplaceTempView("sfpd") 

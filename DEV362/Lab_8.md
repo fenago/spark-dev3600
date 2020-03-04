@@ -8,6 +8,8 @@
 #### Lab Environment
 Notebooks are ready to run. All packages have been installed. There is no requirement for any setup.
 
+
+
 **Note:** Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
 All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
@@ -15,15 +17,14 @@ All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 
 
-<h4><span style="color:red;">Gradient descent learning with multiple inputs </span></h4>
+<h4><span style="color:red;"></span></h4>
 
-##### Run Notebook
-Click notebook `.ipynb` in jupterLab UI and run jupyter notebook.
 
 
 
 Lesson 10: Apache Spark MLlib
-Lab Overview
+<h4><span style="color:red;">Lab Overview </span></h4>
+
 In this activity, you will use Spark to make movie recommendations.
 
 Set up for the Lab
@@ -80,13 +81,9 @@ Toy Story
 animation
 
 First we will explore the data using Spark DataFrames with questions like:
-•
+-Count the maximum and minimum ratings, and the number of users who have rated a movie
 
-Count the maximum and minimum ratings, and the number of users who have rated a movie
-
-•
-
-Display the title of movies with ratings greater than four
+-Display the title of movies with ratings greater than four
 
 Load Data into Spark DataFrames
 First we will import some packages and instantiate a sqlContext, which is the entry point for working
@@ -144,7 +141,7 @@ have transformations and actions. The first() action returns the first element i
 String “1::1193::5::978300760”
 // load the data into an RDD
 
-val ratingText = sc.textFile("/user/user01/moviemed/ratings.dat")
+val ratingText = sc.textFile("/home/jovyan/work/spark-dev3600/moviemed/ratings.dat")
 // MapPartitionsRDD[1] at textFile
 
 // Return the first element in this RDD
@@ -210,10 +207,10 @@ L10-4
 // load the data into DataFrames
 
 val usersDF =
-sc.textFile("/user/user01/moviemed/users.dat").map(parseUser).toDF()
+sc.textFile("/home/jovyan/work/spark-dev3600/moviemed/users.dat").map(parseUser).toDF()
 
 val moviesDF =
-sc.textFile("/user/user01/moviemed/movies.dat").map(parseMovie).toDF()
+sc.textFile("/home/jovyan/work/spark-dev3600/moviemed/movies.dat").map(parseMovie).toDF()
 // create a DataFrame from the ratingsRDD
 val ratingsDF = ratingsRDD.toDF()
 
@@ -374,13 +371,9 @@ L10-7
 
 We run ALS on the input trainingRDD of Rating (user, product, rating) objects with the rank
 and Iterations parameters:
-•
+-Rank is the number of latent factors in the model.
 
-Rank is the number of latent factors in the model.
-
-•
-
-Iterations is the number of iterations to run.
+-Iterations is the number of iterations to run.
 
 The ALS run(trainingRDD) method will build and return a MatrixFactorizationModel, which can
 be used to make product predictions for users.
@@ -678,14 +671,10 @@ L10-12
 
 In this scenario, we will build a tree to predict the label / classification of delayed or not based on the
 following features:
-•
-
-Label → delayed and not delayed
+-Label → delayed and not delayed
 o
 
-•
-
-delayed if delay > 40 minutes
+-delayed if delay > 40 minutes
 
 Features → {day_of_month, weekday, crsdeptime, crsarrtime, carrier,
 crselapsedtime, origin, dest, delayed}
@@ -770,7 +759,7 @@ line(14).toDouble, line(15).toDouble, line(16).toInt)
 We use the flight data for January 2014. Below we load the data from the CSV file into an RDD.
 // load the data into an RDD
 
-val textRDD = sc.textFile("/user/user01/data/rita2014jan.csv")
+val textRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/rita2014jan.csv")
 // MapPartitionsRDD[1] at textFile
 
 // parse the RDD of csv lines into an RDD of flight classes
@@ -785,14 +774,10 @@ To build a classifier model, first extract the features that most contribute to 
 We are defining two classes or labels – Yes (delayed) and No (not delayed). A flight is considered to be
 delayed if it is more than 40 minutes late.
 The features for each item consists of the fields shown below:
-•
-
-Label → delayed and not delayed
+-Label → delayed and not delayed
 o
 
-•
-
-delayed if delay > 40 minutes
+-delayed if delay > 40 minutes
 
 Features → {day_of_month, weekday, crsdeptime, crsarrtime, carrier,
 crselapsedtime, origin, dest, delayed}
@@ -956,25 +941,17 @@ L10-17
 Train the Model
 
 Next, we prepare the values for the parameters that are required for the Decision Tree:
-•
-
-categoricalFeaturesInfo: Specifies which features are categorical and how many
+-categoricalFeaturesInfo: Specifies which features are categorical and how many
 categorical values each of those features can take. The first item here represents the day of the
 month and can take the values from zero through to 31. The second one represents day of the
 week and can take the values from one though seven. The carrier value can go from four to the
 number of distinct carriers and so on.
 
-•
+-maxDepth: Maximum depth of a tree.
 
-maxDepth: Maximum depth of a tree.
+-maxBins: Number of bins used when discretizing continuous features.
 
-•
-
-maxBins: Number of bins used when discretizing continuous features.
-
-•
-
-impurity: Impurity measure of the homogeneity of the labels at the node.
+-impurity: Impurity measure of the homogeneity of the labels at the node.
 
 The model is trained by making associations between the input features and the labeled output
 associated with those features. We train the model using the DecisionTree.trainClassifier

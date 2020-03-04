@@ -1,0 +1,47 @@
+// Lab3.4: Analyze Data Using UDFs and Queries	
+
+// Open spark-shell
+/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master yarn
+
+// Import spark.implicits
+import spark.implicits._
+
+// 1. Load the data in sfpd.csv 
+
+//SFPD data column names
+//incidentnum,category,description,dayofweek,date,time,pddistrict,resolution,address,X,Y,pdid
+
+// Create base Dataset with sfpd.csv data and cache it
+val sfpdDF = spark.read.format("csv").option("inferSchema", true).load("/user/user01/Data/sfpd.csv").toDF("incidentnum", "category", "description", "dayofweek", "date", "time", "pddistrict", "resolution", "address", "X", "Y", "pdid").cache
+
+// 2. Create the Dataset and register it as a table 
+
+//Create case class for sfpd data
+case class Incidents(incidentnum:String, category:String, description:String, dayofweek:String, date:String, time:String, pddistrict:String, resolution:String, address:String, X:Double, Y:Double, pdid:String)
+
+//Create Dataset using Incidents case class
+val sfpdDS = sfpdDF.as[Incidents]
+
+//Register sfpdDS Dataset as sfpd table
+sfpdDS.createTempView("sfpd")
+
+// 3. Get the top three categories, and print them to the console 
+spark.sql("select category, count(category) as numIncidents from sfpd group by category order by numIncidents desc limit 3").show()
+
+// 4. Find the address, resolution, date, and time for burglaries in 2015 
+
+//First we need to define UDF to extract year from date field
+spark.udf.register("getYear", (s:String)=>{
+val strAfter=s.substring(s.lastIndexOf('/')+1)
+strAfter
+})
+
+//Execute query to get address, resolution, date, time for burglaries in 2015
+val data2015 = spark.sql("select address, resolution, date, time from sfpd where getYear(date)='15'")
+	  
+// 5. Save this to a JSON file in a folder /<user home>/appoutput */
+
+data2015.write.format("json").mode("overwrite").save("/user/user01/appoutput")
+
+  
+  
