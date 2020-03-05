@@ -1,6 +1,6 @@
 <img align="right" src="../logo-small.png">
 
-# Lab :
+# Lab : Apply Operations on Datasets
 
 #### Pre-reqs:
 - Google Chrome (Recommended)
@@ -16,13 +16,7 @@ All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use
 
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 
-
-<h4><span style="color:red;"></span></h4>
-
-
-Lesson 3: Apply Operations on
-Datasets
-Lab 3.1: Explore and Save SFPD Data
+## Lab 3.1: Explore and Save SFPD Data
 Estimated time to complete: 20 minutes
 In this activity, you will use Dataset operations and SQL to explore the data in the Datasets. Use Dataset
 operations or SQL queries to answer the questions below.
@@ -51,8 +45,6 @@ ___________________________________________________________________
 val top3CatSQL = spark.sql("__________________________________
 __________________________________________________________________")
 
-Lesson 3: Apply Operations on Datasets
-
 4. Save the top 10 resolutions to a JSON file in the folder /user/user01/output in the cluster
 file system.
 
@@ -73,32 +65,19 @@ saved to the file:
 $ cd /mapr/<cluster name>/user/user01/output
 $ cat part-00000...
 
-Lab 3.3: Create and Use User-Defined Functions (UDFs)
+## Lab 3.3: Create and Use User-Defined Functions (UDFs)
 Estimated time to complete: 20 minutes
 The date field in this Dataset is a string of the form mm/dd/yy. You are going to create a function to
 extract the year from the date field. There are two ways to use a UDF with Spark Datasets. You can
 define it inline and use it within Dataset operations or use it in SQL queries.
 
-Q:
+Q: What do you need to do to use this function in SQL queries?
 
-What do you need to do to use this function in SQL queries?
-
-A:
-
-Register this function as a UDF. Use spark.udf.register.
+A: Register this function as a UDF. Use spark.udf.register.
 
 Hint: Function_Definition:
 def getyear(s:String):String = {
 val year = ___________________________________________
-
-R2.4
-
-PROPRIETARY AND CONFIDENTIAL INFORMATION
-©2019 MapR Technologies, Inc. All Rights Reserved.
-
-L3-2
-
-Lesson 3: Apply Operations on Datasets
 
 year
 }
@@ -117,8 +96,9 @@ val van2015 = spark.sql("_______________________________________")
 Try creating other functions. For example, a function that extracts the month, and use this to see which
 month in 2014 had the most incidents.
 
-Lab 3.4 Analyze Data Using UDFs and Queries
+## Lab 3.4 Analyze Data Using UDFs and Queries
 Estimated time to complete: 30 minutes
+
 Now that you have explored DataFrames and created simple user-defined functions, build a standalone
 application using DataFrames. High-level steps are listed below:
 1. Load the data in sfpd.csv (use Lab 2.3).
@@ -133,15 +113,7 @@ directory (2)”. This is a known issue in Spark 2.1 that you can ignore; Spark 
 attempting to remove temporary files without first making sure they exist.
 6. Exit the scala shell using :q.
 
-R2.4
+<h4><span style="color:red;">Lesson 3 Answer Key</span></h4>
 
-PROPRIETARY AND CONFIDENTIAL INFORMATION
-©2019 MapR Technologies, Inc. All Rights Reserved.
-
-L3-3
-
-Lesson 3: Apply Operations on Datasets
-
-Lesson 3 Answer Key
 Note: Answers can be found in files which were downloaded at the beginning of the course,
 to /mapr/<cluster name>/user/user01/Answers.

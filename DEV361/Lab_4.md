@@ -15,7 +15,7 @@ All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 
 
-<h4><span style="color:red;">Lab Overview </span></h4>
+<h4><span style="color:red;">Lab Overview </span></h4>
 
 In this activity, you will load SFPD data from a CSV file. You will create pair RDD and apply pair RDD
 operations to explore the data.

@@ -42,7 +42,7 @@ description:__________, dayofweek:__________, date:__________,
 time:__________, pddistrict:__________, resolution:__________,
 address:__________, x:__________, y:__________, pdid:__________)
 
-Lesson 2: Create Datasets
+Lesson 2: Create Datasets
 
 5. Convert the DataFrame into a Dataset of Incidents using the as method:
 val sfpdDS = sfpdDF.________________________________________________

@@ -14,7 +14,7 @@ All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use
 
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 
-<h4><span style="color:red;">Lab Overview </span></h4>
+<h4><span style="color:red;">Lab Overview </span></h4>
 
 In this activity, you will use Spark to make movie recommendations.
 
@@ -34,12 +34,11 @@ In this tutorial we will perform the following steps:
 5. Make predictions with the training data and observe the results.
 6. Test the model with the test data.
 
-Lab 10.1: Load and Inspect Data using Spark Shell
+## Lab 10.1: Load and Inspect Data using Spark Shell
 Estimated time to complete: 10 minutes
 Log in to your Sandbox or cluster, as explained in the Connection Guide.
 $ ssh –p port user01@<ipaddress>
 
-Lesson 10: Apache Spark MLlib
 
 To launch the Interactive Shell, at the command line, run the following command:
 spark-shell --master local[2]
@@ -94,9 +93,8 @@ import org.apache.spark.sql._
 import org.apache.spark.mllib.recommendation.{ALS,
 MatrixFactorizationModel, Rating}
 
-L10-2
 
-Lesson 10: Apache Spark MLlib
+
 
 Below we use Scala case classes to define the Movie and User schemas corresponding to the
 movies.dat and users.dat files.
@@ -142,9 +140,8 @@ ratingText.first()
 We use the org.apache.spark.mllib.recommendation.Rating class for parsing the ratings.dat
 file. Later we will use the Rating class as input for the ALS run method.
 
-L10-3
 
-Lesson 10: Apache Spark MLlib
+
 
 Then we use the map transformation on ratingText, which will apply the parseRating function to
 each element in ratingText and return a new RDD of Rating objects. We cache the ratings data, since
@@ -191,9 +188,8 @@ Below we load the data from the users and movies data files into an RDD, use the
 with the parse functions, and then call toDF() which returns a DataFrame for the RDD. Then we register
 the DataFrames as temporary tables so that we can use the tables in SQL statements.
 
-L10-4
 
-Lesson 10: Apache Spark MLlib
+
 
 // load the data into DataFrames
 
@@ -239,9 +235,8 @@ root
 |-- rating: double (nullable = false) |-- zip: string (nullable =
 true)
 
-L10-5
 
-Lesson 10: Apache Spark MLlib
+
 
 Here are some example queries using Spark SQL with DataFrames on the Movie Lens data. The first
 query gets the maximum and minimum ratings along with the count of users who have rated a movie.
@@ -303,9 +298,8 @@ println(mostActiveUsersSchemaRDD.collect().mkString("\n"))
 [4277,1743]
 . . .
 
-L10-6
 
-Lesson 10: Apache Spark MLlib
+
 
 // Find the movies that user 4169 rated higher than 4
 
@@ -344,7 +338,7 @@ Down in the Delta...
 
 Spanish Prisoner,... …
 
-Lab 10.2: Use Spark to Make Movie Recommendations
+## Lab 10.2: Use Spark to Make Movie Recommendations
 Estimated time to complete: 20 minutes
 
 Using ALS to Build a Matrix Factorization Model
@@ -356,9 +350,8 @@ model with the remaining data is known as cross validation, the goal is to estim
 predictive model will perform in practice. To improve the model this process is often done multiple times
 with different subsets, we will only do it once.
 
-L10-7
 
-Lesson 10: Apache Spark MLlib
+
 
 We run ALS on the input trainingRDD of Rating (user, product, rating) objects with the rank
 and Iterations parameters:
@@ -405,9 +398,8 @@ array(1))).collectAsMap()
 topRecsForUser.map(rating => (movieTitles(rating.product),
 rating.rating)).foreach(println)
 
-L10-8
 
-Lesson 10: Apache Spark MLlib
+
 (Other Side of Sunday) (1996),5.481923568209796)
 (Shall We Dance? (1937),5.435728723311838)
 (42 Up (1998),5.3596886655841995)
@@ -458,9 +450,8 @@ case Rating(user, product, rating) => ((user, product), rating)
 val testAndPredictionsJoinedRDD =
 testKeyedByUserProductRDD.join(predictionsKeyedByUserProductRDD)
 
-L10-9
 
-Lesson 10: Apache Spark MLlib
+
 // print the (user, product),( test rating, predicted rating)
 testAndPredictionsJoinedRDD.take(3).mkString("\n")
 ((455,1254),(4.0,4.48399986469759))
@@ -497,9 +488,8 @@ Math.abs(err)
 
 meanAbsoluteError: Double = 0.7244940545944053
 
-L10-10
 
-Lesson 10: Apache Spark MLlib
+
 
 Make Predictions for Yourself
 There are no movie recommendations for userid 0. You can use this user to add your own ratings and
@@ -541,11 +531,10 @@ rating.rating)).foreach(println)
 
 (Love and Other Catastrophes (1996),7.2672409490233045)
 
-L10-11
 
-Lesson 10: Apache Spark MLlib
 
-Lab 10.3: Analyze a simple flight example with decision trees
+
+## Lab 10.3: Analyze a simple flight example with decision trees
 Estimated time to complete: 15 minutes
 Our data is from http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=OnTime. We are using flight information for January 2014. For each flight, we have the following information:
 Field
@@ -656,9 +645,8 @@ Distance
 
 2475
 
-L10-12
 
-Lesson 10: Apache Spark MLlib
+
 
 In this scenario, we will build a tree to predict the label / classification of delayed or not based on the
 following features:
@@ -732,9 +720,8 @@ dest_id: String, dest: String, crsdeptime: Double, deptime: Double,
 depdelaymins: Double, crsarrtime: Double, arrtime: Double, arrdelay:
 Double, crselapsedtime: Double, dist: Int)
 
-L10-13
 
-Lesson 10: Apache Spark MLlib
+
 
 The function below parses a line from the data file into the Flight class.
 // function to parse input into Flight class
@@ -773,9 +760,8 @@ o
 Features → {day_of_month, weekday, crsdeptime, crsarrtime, carrier,
 crselapsedtime, origin, dest, delayed}
 
-L10-14
 
-Lesson 10: Apache Spark MLlib
+
 
 Below we transform the non-numeric features into numeric values. For example, the carrier AA is the
 number 6. The originating airport ATL is 273.
@@ -813,9 +799,8 @@ var index2: Int = 0
 flightsRDD.map(flight => flight.dest).distinct.collect.foreach(x =>
 { destMap += (x -> index2); index2 += 1 })
 
-L10-15
 
-Lesson 10: Apache Spark MLlib
+
 
 Define Features Array
 
@@ -877,9 +862,8 @@ val dest1 = destMap(flight.dest) // category
 
 val delayed = if (flight.depdelaymins.toDouble > 40) 1.0 else 0.0
 
-L10-16
 
-Lesson 10: Apache Spark MLlib
+
 
 Array(delayed.toDouble, monthday.toDouble, weekday.toDouble,
 crsdeptime1.toDouble, crsarrtime1.toDouble, carrier1.toDouble,
@@ -925,9 +909,8 @@ testData.take(1)
 //res21: Array[org.apache.spark.mllib.regression.LabeledPoint] =
 Array((0.0,[18.0,6.0,900.0,1225.0,6.0,385.0,214.0,294.0]))
 
-L10-17
 
-Lesson 10: Apache Spark MLlib
+
 
 Train the Model
 
@@ -948,10 +931,7 @@ The model is trained by making associations between the input features and the l
 associated with those features. We train the model using the DecisionTree.trainClassifier
 method which returns a DecisionTreeModel.
 
-L10-18
-
-Lesson 10: Apache Spark MLlib
-
+```
 // set ranges for 0=dofM 1=dofW 4=carrier 6=origin 7=dest
 var categoricalFeaturesInfo = Map[Int, Int]()
 categoricalFeaturesInfo += (0 -> 31)
@@ -995,17 +975,20 @@ If (feature 0 in {11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0})
 If (feature 6 in
 {0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,10.0,11.0,12.0,13.0...
 
-L10-19
+```
 
-Lesson 10: Apache Spark MLlib
+
 
 Model.toDebugString prints out the decision tree, which asks the following questions to determine if
 the flight was delayed or not:
 
-Test the Model
+**Test the Model**
+
 Next we use the test data to get predictions. Then we compare the predictions of a flight delay to the
 actual flight delay value, the label. The wrong prediction ratio is the count of wrong predictions divided by
 the count of test data values, which is 31%.
+
+```
 // Evaluate model on test instances and compute test error
 val labelAndPreds = testData.map { point =>
 
@@ -1025,11 +1008,7 @@ res35: Long = 11040
 
 val ratioWrong=wrongPrediction.count().toDouble/testData.count()
 ratioWrong: Double = 0.3157443157443157
+```
 
-L10-20
 
-Lesson 10: Apache Spark MLlib
 
-L10-21
-
-

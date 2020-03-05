@@ -1,6 +1,6 @@
 <img align="right" src="../logo-small.png">
 
-# Lab : Load and Inspect Data
+# Lab : Load and Inspect Data
 
 #### Pre-reqs:
 - Google Chrome (Recommended)
@@ -14,7 +14,7 @@ All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use
 
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 
-<h4><span style="color:red;">Lab Overview </span></h4>
+<h4><span style="color:red;">Lab Overview </span></h4>
 
 In this activity, you will load data into Apache Spark and inspect the data using the Spark interactive shell.
 This lab consists of two sections. In the first section, we use the SparkContext method, textFile, to
