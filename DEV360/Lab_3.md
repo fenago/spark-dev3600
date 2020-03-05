@@ -45,7 +45,7 @@ ___________________________________________________________________
 val top3CatSQL = spark.sql("__________________________________
 __________________________________________________________________")
 
-4. Save the top 10 resolutions to a JSON file in the folder /user/user01/output in the cluster
+4. Save the top 10 resolutions to a JSON file in the folder /home/jovyan/work/spark-dev3600/output in the cluster
 file system.
 
 Hint: Use: DS.write.format("json").mode("<mode type>").save("<path
@@ -62,8 +62,10 @@ attempting to remove temporary files without first making sure they exist.
 
 5. Open an additional terminal window. At the Linux command prompt, verify that the data was
 saved to the file:
-$ cd /mapr/<cluster name>/user/user01/output
-$ cat part-00000...
+
+`cd /mapr/<cluster name>/home/jovyan/work/spark-dev3600/output`
+
+`cat part-00000...`
 
 ## Lab 3.3: Create and Use User-Defined Functions (UDFs)
 Estimated time to complete: 20 minutes
@@ -105,7 +107,7 @@ application using DataFrames. High-level steps are listed below:
 2. Create the Dataset (schema inferred by reflection) and register it as a table (use Lab 2.3).
 3. Get the top three categories and print them to the console (refer to Lab 3.1).
 4. Find the address, resolution, date, and time for burglaries in 2015 (refer to Lab 3.1).
-5. Save this to a JSON file in a folder /user/user01/appoutput in the cluster (refer to Lab 3.1).
+5. Save this to a JSON file in a folder /home/jovyan/work/spark-dev3600/appoutput in the cluster (refer to Lab 3.1).
 
 Note: You may encounter the following message: “ERROR MapRFileSystem:
 Failed to delete path maprfs:/… error: No such file or
@@ -116,4 +118,4 @@ attempting to remove temporary files without first making sure they exist.
 <h4><span style="color:red;">Lesson 3 Answer Key</span></h4>
 
 Note: Answers can be found in files which were downloaded at the beginning of the course,
-to /mapr/<cluster name>/user/user01/Answers.
+to `/home/jovyan/work/spark-dev3600/Answers`.

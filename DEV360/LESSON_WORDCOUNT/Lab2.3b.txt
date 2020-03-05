@@ -4,7 +4,7 @@
 /opt/mapr/spark/spark-2.1.0/bin/spark-shell --master yarn
 
 // 2. Load data the Dataset using SparkSession’s read.text method and assign type as string.
-val dataDS = spark.read.text("/user/user01/Data/wordcount.txt").as[String]
+val dataDS = spark.read.text("/home/jovyan/work/spark-dev3600/data/wordcount.txt").as[String]
 
 // 3. Use Datset’s flatmap method to split lines into words. Use "\\s+" (spaces) as word separator.
 val wordsDS = dataDS.flatMap(value => value.split("\\s+"))

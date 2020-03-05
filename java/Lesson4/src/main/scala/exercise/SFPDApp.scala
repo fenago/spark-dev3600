@@ -11,7 +11,7 @@ object SFPDApp {
     val spark = SparkSession.builder.master("local").appName("SFPDApp").getOrCreate()
 
     /* MAKE SURE THE PATH TO THE DATA FILE IS CORRECT */
-    val sfpdFile = "/user/user01/Data/sfpd.csv"
+    val sfpdFile = "/home/jovyan/work/spark-dev3600/data/sfpd.csv"
 
     //SFPD data column names
     //incidentnum,category,description,dayofweek,date,time,pddistrict,resolution,address,X,Y,pdid

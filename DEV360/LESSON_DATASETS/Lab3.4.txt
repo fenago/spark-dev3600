@@ -12,7 +12,7 @@ import spark.implicits._
 //incidentnum,category,description,dayofweek,date,time,pddistrict,resolution,address,X,Y,pdid
 
 // Create base Dataset with sfpd.csv data and cache it
-val sfpdDF = spark.read.format("csv").option("inferSchema", true).load("/user/user01/Data/sfpd.csv").toDF("incidentnum", "category", "description", "dayofweek", "date", "time", "pddistrict", "resolution", "address", "X", "Y", "pdid").cache
+val sfpdDF = spark.read.format("csv").option("inferSchema", true).load("/home/jovyan/work/spark-dev3600/data/sfpd.csv").toDF("incidentnum", "category", "description", "dayofweek", "date", "time", "pddistrict", "resolution", "address", "X", "Y", "pdid").cache
 
 // 2. Create the Dataset and register it as a table 
 
@@ -41,7 +41,7 @@ val data2015 = spark.sql("select address, resolution, date, time from sfpd where
 	  
 // 5. Save this to a JSON file in a folder /<user home>/appoutput */
 
-data2015.write.format("json").mode("overwrite").save("/user/user01/appoutput")
+data2015.write.format("json").mode("overwrite").save("/home/jovyan/work/spark-dev3600/appoutput")
 
   
   

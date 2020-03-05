@@ -24,7 +24,7 @@ Estimated time to complete: 20 minutes
 **Note:** The lab environment has Spark loaded.
 2. Load the data from the file sfpd.csv, which was unzipped earlier:
 val sfpdDF = spark.read.format("csv").option("inferSchema",
-true).load("/user/user01/Data/sfpd.csv").toDF("incidentnum",
+true).load("/home/jovyan/work/spark-dev3600/data/sfpd.csv").toDF("incidentnum",
 "category", "description", "dayofweek", "date", "time",
 "pddistrict", "resolution", "address", "x", "y", "pdid")
 
@@ -59,7 +59,7 @@ Estimated time to complete: 30 minutes
 Try this! Try this optional lab on your own, or in class if you finish the other lab early. Follow
 the steps below to implement Word Count using Datasets.
 1. Launch the Spark shell, if it is not already running.
-2. Load the Dataset with the file /user/user01/Data/wordcount.txt using SparkSession’s
+2. Load the Dataset with the file /home/jovyan/work/spark-dev3600/data/wordcount.txt using SparkSession’s
 read.text method. Assign the type as string.
 3. Use the Dataset’s flatmap method to split lines into words. Use “\\s+” (spaces) as word
 separator.

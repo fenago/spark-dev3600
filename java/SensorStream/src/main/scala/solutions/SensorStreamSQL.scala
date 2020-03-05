@@ -23,11 +23,11 @@ object SensorStreamSQL {
     val Sensor = new StructType().add("resid", "string").add("date", "string").add("time", "string").add("hz", "double").add("disp", "double").add("flow", "double").add("sedPPM", "double").add("psi", "double").add("chlppm", "double")
 
     // Load pump and maint data
-    val pumpDF = spark.read.option("inferSchema", "true").csv("/user/user01/Data/sensorvendor.csv").toDF("resid", "pumpType", "purchaseDate", "serviceDate", "vendor", "longitude", "lattitude")
+    val pumpDF = spark.read.option("inferSchema", "true").csv("/home/jovyan/work/spark-dev3600/data/sensorvendor.csv").toDF("resid", "pumpType", "purchaseDate", "serviceDate", "vendor", "longitude", "lattitude")
     println("pumpRDD take 5")
     pumpDF.show(5)
 
-    val maintDF = spark.read.option("inferSchema", "true").csv("/user/user01/Data/sensormaint.csv").toDF("resid", "eventDate", "technician", "description")
+    val maintDF = spark.read.option("inferSchema", "true").csv("/home/jovyan/work/spark-dev3600/data/sensormaint.csv").toDF("resid", "eventDate", "technician", "description")
     println("maintRDD take 5")
     maintDF.show(5)
 
@@ -36,7 +36,7 @@ object SensorStreamSQL {
     pumpDF.createTempView("pump")
 
     // parse the lines of data into sensor objects
-    val sensorDF = spark.readStream.option("sep", ",").schema(Sensor).csv("/user/user01/stream/")
+    val sensorDF = spark.readStream.option("sep", ",").schema(Sensor).csv("/home/jovyan/work/spark-dev3600/stream/")
     sensorDF.createTempView("sensor")
 
     val res = spark.sql("SELECT resid, date,MAX(hz) as maxhz, min(hz) as minhz, avg(hz) as avghz, MAX(disp) as maxdisp, min(disp) as mindisp, avg(disp) as avgdisp, MAX(flow) as maxflow, min(flow) as minflow, avg(flow) as avgflow,MAX(sedPPM) as maxsedPPM, min(sedPPM) as minsedPPM, avg(sedPPM) as avgsedPPM, MAX(psi) as maxpsi, min(psi) as minpsi, avg(psi) as avgpsi,MAX(chlPPM) as maxchlPPM, min(chlPPM) as minchlPPM, avg(chlPPM) as avgchlPPM FROM sensor GROUP BY resid,date")

@@ -23,7 +23,7 @@ object SensorStreamWindow {
     val Sensor = new StructType().add("resid", "string").add("date", "string").add("time", "string").add("hz", "double").add("disp", "double").add("flow", "double").add("sedPPM", "double").add("psi", "double").add("chlppm", "double")
 
     // parse the lines of data into sensor objects
-    val sensorDF = spark.readStream.option("sep", ",").schema(Sensor).csv("/user/user01/stream/")
+    val sensorDF = spark.readStream.option("sep", ",").schema(Sensor).csv("/home/jovyan/work/spark-dev3600/stream/")
     sensorDF.createTempView("sensor")
 
     // Start computation

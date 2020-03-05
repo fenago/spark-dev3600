@@ -18,5 +18,5 @@ top3CatSQL.show
 
 
 // 4. Save the top 10 resolutions to a JSON file.
-top10ResSQL.write.format("json").mode("overwrite").save("/user/user01/output")
+top10ResSQL.write.format("json").mode("overwrite").save("/home/jovyan/work/spark-dev3600/output")
 
