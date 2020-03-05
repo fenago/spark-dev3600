@@ -19,17 +19,18 @@ Labs for this course are available at path shared below. Elev8ed Labs (powered b
 		* <host-ip>:<port>/lab/workspaces/lab1
 2. ##### Create Datasets
 		* <host-ip>:<port>/lab/workspaces/lab2
-3. ##### Build a Simple Spark Application
+3. ##### Apply Operations on Datasets
 		* <host-ip>:<port>/lab/workspaces/lab3
-4. ##### Work with Pair RDD
+4. ##### Build a Simple Spark Application
 		* <host-ip>:<port>/lab/workspaces/lab4
-5. ##### Create DataFrame Using Reflection
+5. ##### Work with Pair RDD
 		* <host-ip>:<port>/lab/workspaces/lab5
-6. ##### Monitor Apache Spark Applications
+6. ##### Create DataFrame Using Reflection
 		* <host-ip>:<port>/lab/workspaces/lab6
-7. ##### Use Apache Spark GraphX to Analyze Flight Data
+7. ##### Monitor Apache Spark Applications
 		* <host-ip>:<port>/lab/workspaces/lab7
-8. ##### Apache Spark MLlib
+8. ##### Use Apache Spark GraphX to Analyze Flight Data
 		* <host-ip>:<port>/lab/workspaces/lab8
-9. ##### Apply Operations on Datasets
+9. ##### Apache Spark MLlib
 		* <host-ip>:<port>/lab/workspaces/lab9
+
