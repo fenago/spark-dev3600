@@ -132,16 +132,22 @@ graph.edges.collect.foreach(println)
 
 
 1. How many airports are there?
+
+```
 // How many airports?
 
 val numairports = graph.numVertices
 // Long = 3
+```
 
 2. How many routes are there?
+
+```
 // How many routes?
 
 val numroutes = graph.numEdges
 // Long = 3
+```
 
 3. Which routes are greater than 1000 miles in distance?
 
@@ -401,6 +407,7 @@ graph.triplets.take(3).foreach(println)
 ((10135,ABE),(13930,ORD),654)
 
 ((10140,ABQ),(10397,ATL),1269)
+```
 
 5. Compute the highest degree vertex.
 
@@ -416,7 +423,6 @@ val maxInDegree: (VertexId, Int) = graph.inDegrees.reduce(max)
 maxInDegree: (org.apache.spark.graphx.VertexId, Int) =
 (10397,152)
 
-©2017 MapR Technologies, Inc. All Rights Reserved. L9-12
 val maxOutDegree: (VertexId, Int) = graph.outDegrees.reduce(max)
 maxOutDegree: (org.apache.spark.graphx.VertexId, Int) =
 (10397,153)
@@ -453,7 +459,6 @@ maxout.foreach(println)
 (10397,(153,ATL))
 (13930,(146,ORD))
 (11298,(143,DFW))
-
 
 
 7. What are the top 10 flights from airport to airport?
