@@ -6,21 +6,20 @@
 - Google Chrome (Recommended)
 
 #### Lab Environment
-Notebooks are ready to run. All packages have been installed. There is no requirement for any setup.
+There is no requirement for any setup.
 
 **Note:** Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
 All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
 
-You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
+You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab9`
 
 <h4><span style="color:red;">Lab Overview </span></h4>
 
 In this activity, you will use Spark to make movie recommendations.
 
-Set up for the Lab
-If you have not already downloaded the files DEV3600_LAB_DATA.zip and DEV3600_LAB_FILES.zip
-to your machine, and copied the data to your Sandbox or cluster, do so now.
+### Set up for the Lab
+
 You can use the Scala commands in the spark-shell-commands.txt file or you can copy from the
 code boxes below.
 

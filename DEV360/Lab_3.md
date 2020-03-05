@@ -6,7 +6,7 @@
 - Google Chrome (Recommended)
 
 #### Lab Environment
-Notebooks are ready to run. All packages have been installed. There is no requirement for any setup.
+There is no requirement for any setup.
 
 
 
@@ -14,7 +14,7 @@ Notebooks are ready to run. All packages have been installed. There is no requir
 
 All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
 
-You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
+You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab3`
 
 ## Lab 3.1: Explore and Save SFPD Data
 Estimated time to complete: 20 minutes

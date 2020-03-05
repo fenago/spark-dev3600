@@ -6,15 +6,13 @@
 - Google Chrome (Recommended)
 
 #### Lab Environment
-Notebooks are ready to run. All packages have been installed. There is no requirement for any setup.
-
-
+There is no requirement for any setup.
 
 **Note:** Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
 All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
 
-You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
+You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab8`
 
 <h4><span style="color:red;">Analyzing a Simple Flight Example with GraphX</span></h4>
 
@@ -93,12 +91,14 @@ properties. In our example, an edge consists of:
 - Edge property distance -> distance (Long)
 
 
-Edges Table for Routes
+### Edges Table for Routes
 
 ![](../images/17.png)
 
 We define an RDD with the above properties that is then used for the edges. The edge RDD has the form
 (src id, dest id, distance).
+
+```
 // create routes
 
 RDD with srcid, destid , distance
@@ -128,7 +128,7 @@ graph.edges.collect.foreach(println)
 // Edge(2,3,800)
 
 // Edge(3,1,1400)
-
+```
 
 
 1. How many airports are there?
@@ -144,6 +144,8 @@ val numroutes = graph.numEdges
 // Long = 3
 
 3. Which routes are greater than 1000 miles in distance?
+
+```
 // routes > 1000 miles distance?
 
 graph.edges.filter {
@@ -152,8 +154,12 @@ case Edge(src, dst, prop) => prop > 1000
 // Edge(1,2,1800)
 
 // Edge(3,1,1400)
+```
+
 4. The EdgeTriplet class extends the Edge class by adding the srcAttr and dstAttr
 members which contain the source and destination properties respectively.
+
+```
 // triplets
 
 graph.triplets.take(3).foreach(println)
@@ -161,7 +167,11 @@ graph.triplets.take(3).foreach(println)
 ((2,ORD),(3,DFW),800)
 
 ((3,DFW),(1,SFO),1400)
+```
+
 5. Sort and print out the longest distance routes.
+
+```
 // print out longest routes
 
 graph.triplets.sortBy(_.attr,
@@ -170,164 +180,50 @@ ascending=false).map(triplet =>
 "Distance " + triplet.attr.toString + " from " +
 triplet.srcAttr + " to " + triplet.dstAttr + ".")
 .collect.foreach(println)
+```
+
 Distance 1800 from SFO to ORD.
 Distance 1400 from DFW to SFO.
 Distance 800 from ORD to DFW.
 
 
-
-Lab 9.2: Analyze Real Flight Data with GraphX
+## Lab 9.2: Analyze Real Flight Data with GraphX
 Estimated time to complete: 25 minutes
+
 Our data is from http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=OnTime. We are using flight information for January 2015. For each flight, we have the following information:
 Field
 
-Description
-
-Example Value
-
-dOfM(String)
-
-Day of month
-
-1
-
-dOfW (String)
-
-Day of week
-
-4
-
-carrier (String)
-
-Carrier code
-
-AA
-
-tailNum (String)
-
-Unique identifier for the plane - tail number
-
-N787AA
-
-flnum(Int)
-
-Flight number
-
-21
-
-org_id(String)
-
-Origin airport ID
-
-12478
-
-origin(String)
-
-Origin Airport Code
-
-JFK
-
-dest_id (String)
-
-Destination airport ID
-
-12892
-
-dest (String)
-
-Destination airport code
-
-LAX
-
-crsdeptime(Double)
-
-scheduled departure time
-
-900
-
-deptime (Double)
-
-actual departure time
-
-855
-
-depdelaymins (Double)
-
-departure delay in minutes
-
-0
-
-crsarrtime (Double)
-
-scheduled arrival time
-
-1230
-
-arrtime (Double)
-
-actual arrival time
-
-1237
-
-arrdelaymins (Double)
-
-Arrival delay minutes
-
-7
-
-crselapsedtime (Double)
-
-Elapsed time
-
-390
-
-dist (Int)
-
-Distance
-
-2475
-
-
+![](../images/19.png)
 
 In this scenario, we are going to represent the airports as vertices and routes as edges. We are interested
 in visualizing airports and routes and would like to see the number of airports that have departures or
 arrivals.
 
-Set up for the Lab
-If you have not already downloaded the files DEV3600_LAB_DATA.zip and DEV3600_LAB_FILES.zip
-to your machine, and copied the zipped data to your Sandbox or cluster, do so now.
 
 **Objectives**
 
 -Define Vertices
-
 -Define Edges
-
 -Create Graph
 
-Launch the Spark Interactive Shell
-In this activity we will use the Spark Interactive Shell. The Spark Interactive Shell is available in Scala or
-Python.
-
+## Launch the Spark Interactive Shell
+In this activity we will use the Spark Interactive Shell. The Spark Interactive Shell is available in Scala or Python.
 
 
 **Note:** All instructions here are for Scala.
 
 SSH into your MapR Sandbox or cluster node. To launch the Interactive Shell, run the following command
 at the command line:
-spark-shell --master local[2]
+`spark-shell --master local[2]`
 
 
-**Note:** To find the Spark version:
-ls /opt/mapr/spark
-To quit the Scala Interactive Shell, use the command:
-exit
+**Note:** To quit the Scala Interactive Shell, use the command:
+`exit`
 
-Define Vertices
-Open the file 09_Graphx_Lab_Shell_2.scala in your favorite editor. All the shell commands are
+### Define Vertices
+
+Open the file   `09_Graphx_Lab_Shell_2.scala` in your favorite editor. All the shell commands are
 there, or you can copy paste from this document.
-
-
 
 First we will import the GraphX packages. In the code boxes, comments are in green and output is in
 blue.
@@ -343,7 +239,11 @@ import org.apache.spark.util.IntParam
 import org.apache.spark.graphx._
 
 import org.apache.spark.graphx.util.GraphGenerators
+```
+
 Below we a Scala case classes to define the flight schema corresponding to the CSV data file.
+
+```
 // define the Flight Schema
 
 case class Flight(dofM:String, dofW:String, carrier:String,
@@ -351,7 +251,11 @@ tailnum:String, flnum:Int, org_id:Long, origin:String,
 dest_id:Long, dest:String, crsdeptime:Double, deptime:Double,
 depdelaymins:Double, crsarrtime:Double, arrtime:Double,
 arrdelay:Double,crselapsedtime:Double,dist:Int)
+```
+
 The function below parses a line from the data file into the Flight class.
+
+```
 // function to parse input into Flight class
 def parseFlight(str: String): Flight = {
 val line = str.split(",")
@@ -384,14 +288,9 @@ vertex has the following property:
 
 -Airport name (String)
 
-Vertex Table for Airports
-ID
+**Vertex Table for Airports**
 
-Property(V)
-
-10397
-
-ATL
+![](../images/20.png)
 
 We define an RDD with the above properties that is then used for the Vertexes .
 
@@ -423,22 +322,12 @@ properties. In our example, an edge consists of:
 - Edge property distance -> distance (Long)
 
 
-
-Edges Table for Routes
-srcid
-
-destid
-
-Property(E)
-
-14869
-
-14683
-
-1087
+![](../images/21.png)
 
 We define an RDD with the above properties that is then used for the Edges. The edge RDD has the form
 (src id, dest id, distance).
+
+```
 // create routes
 
 RDD with srcid, destid , distance
@@ -462,6 +351,8 @@ edges.take(1)
 Create Property Graph
 To create a graph, you need to have a Vertex RDD, Edge RDD and a Default vertex. Create a property
 graph called graph.
+
+```
 // define the graph
 
 val graph = Graph(airports, edges, nowhere)
@@ -501,6 +392,8 @@ Edge(10140,12264,1628))
 
 4. The EdgeTriplet class extends the Edge class by adding the srcAttr and dstAttr
 members which contain the source and destination properties respectively.
+
+```
 // triplets
 
 graph.triplets.take(3).foreach(println)
@@ -512,37 +405,28 @@ graph.triplets.take(3).foreach(println)
 5. Compute the highest degree vertex.
 
 ```
-// Define a reduce operation to compute the highest degree
-vertex
+// Define a reduce operation to compute the highest degree vertex
 
-def max(**A:** (VertexId, Int), b: (VertexId, Int)): (VertexId, Int)
+def max(a: (VertexId, Int), b: (VertexId, Int)): (VertexId, Int)
 = {
+if (a._2 > b._2) a else b
 }
 
-if (a._2 > b._2) a else b
-
-val maxInDegree: (VertexId, Int)
-
-= graph.inDegrees.reduce(max)
-
+val maxInDegree: (VertexId, Int) = graph.inDegrees.reduce(max)
 maxInDegree: (org.apache.spark.graphx.VertexId, Int) =
 (10397,152)
 
-
-
+©2017 MapR Technologies, Inc. All Rights Reserved. L9-12
 val maxOutDegree: (VertexId, Int) = graph.outDegrees.reduce(max)
 maxOutDegree: (org.apache.spark.graphx.VertexId, Int) =
 (10397,153)
-val maxDegrees: (VertexId, Int)
-val maxDegrees: (VertexId, Int)
 
-= graph.degrees.reduce(max)
-
-= graph.degrees.reduce(max)
+val maxDegrees: (VertexId, Int) = graph.degrees.reduce(max)
+val maxDegrees: (VertexId, Int) = graph.degrees.reduce(max)
 
 airportMap(10397)
-
 res70: String = ATL
+```
 
 6. Which airport has the most incoming flights?
 
@@ -552,6 +436,8 @@ res70: String = ATL
 val maxIncoming = graph.inDegrees.collect.sortWith(_._2 >
 _._2).map(x => (airportMap(x._1), x._2)).take(3)
 maxIncoming.foreach(println)
+```
+
 (ATL,152)
 (ORD,145)
 (DFW,143)

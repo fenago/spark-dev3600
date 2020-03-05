@@ -6,7 +6,7 @@
 - Google Chrome (Recommended)
 
 #### Lab Environment
-Notebooks are ready to run. All packages have been installed. There is no requirement for any setup.
+There is no requirement for any setup.
 
 
 
