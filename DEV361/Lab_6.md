@@ -25,7 +25,7 @@ Our dataset is a .csv file that consists of SFPD incident data from SF OpenData 
 For each incident, we have the following information:
 Field
 
-![](..\images\10.png)
+![](../images/10.png)
 
 We will use this same dataset for all the labs in this course.
 
@@ -74,7 +74,7 @@ import sqlContext.implicits._
 2. Define case class. The case class defines the table schema. You specify the name of the class,
 each field and type. Below is the list of fields and type.
 
-![](..\images\11.png)
+![](../images/11.png)
 
 To define the case class Incidents, complete the statement below:
 
@@ -243,9 +243,9 @@ application using DataFrames that:
 
 <h4><span style="color:red;">Answers</span></h4>
 
-![](..\images\12.png)
+![](../images/12.png)
 
-![](..\images\13.png)
+![](../images/13.png)
 
 
 ## Solutions

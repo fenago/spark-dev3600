@@ -26,7 +26,7 @@ code boxes below.
 
 A Typical Machine Learning Workflow
 
-![](..\images\105-285.png)
+![](../images/105-285.png)
 
 In this tutorial we will perform the following steps:
 1. Load the sample data.
@@ -47,7 +47,7 @@ spark-shell --master local[2]
 
 The Sample Data Set
 
-![](..\images\101.png)
+![](../images/101.png)
 
 First we will explore the data using Spark DataFrames with questions like:
 -Count the maximum and minimum ratings, and the number of users who have rated a movie
@@ -329,7 +329,7 @@ model with the remaining data is known as cross validation, the goal is to estim
 predictive model will perform in practice. To improve the model this process is often done multiple times
 with different subsets, we will only do it once.
 
-![](..\images\111-296.png)
+![](../images/111-296.png)
 
 
 We run ALS on the input trainingRDD of Rating (user, product, rating) objects with the rank
@@ -518,7 +518,7 @@ Estimated time to complete: 15 minutes
 
 Our data is from http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=OnTime. We are using flight information for January 2014. For each flight, we have the following information:
 
-![](..\images\102.png)
+![](../images/102.png)
 
 In this scenario, we will build a tree to predict the label / classification of delayed or not based on the
 following features:
@@ -530,7 +530,7 @@ o
 Features → {day_of_month, weekday, crsdeptime, crsarrtime, carrier,
 crselapsedtime, origin, dest, delayed}
 
-![](..\images\103.png)
+![](../images/103.png)
 
 # Load and Parse the Data from a CSV File
 First, we will import the machine learning packages.
@@ -638,7 +638,7 @@ flightsRDD.map(flight => flight.dest).distinct.collect.foreach(x =>
 { destMap += (x -> index2); index2 += 1 })
 ```
 
-![](..\images\120-315.png)
+![](../images/120-315.png)
 
 ## Define Features Array
 
@@ -648,7 +648,7 @@ the value for each feature.
 Next, we create an RDD containing feature arrays consisting of the label and the features in numeric
 format. An example is shown in this table:
 
-![](..\images\104.png)
+![](../images/104.png)
 
 ```
 // Defining the features array
@@ -718,7 +718,7 @@ Array((0.0,[18.0,6.0,900.0,1225.0,6.0,385.0,214.0,294.0]))
 
 ## Train the Model
 
-![](..\images\122-320.png)
+![](../images/122-320.png)
 
 Next, we prepare the values for the parameters that are required for the Decision Tree:
 -categoricalFeaturesInfo: Specifies which features are categorical and how many
@@ -786,7 +786,7 @@ If (feature 6 in
 Model.toDebugString prints out the decision tree, which asks the following questions to determine if
 the flight was delayed or not:
 
-![](..\images\124-325.png)
+![](../images/124-325.png)
 
 **Test the Model**
 

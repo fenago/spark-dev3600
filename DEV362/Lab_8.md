@@ -22,15 +22,15 @@ You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab`
 In this activity, you will use GraphX to analyze flight data. As a starting simple example, we will analyze
 three flights. For each flight, we have the following information:
 
-![](..\images\14.png)
+![](../images/14.png)
 
 In this scenario, we are going to represent the airports as vertices and routes as edges. For our graph, we
 will have three vertices, each representing an airport. The distance between the airports is a route
 property, as shown below:
 
-![](..\images\92-258.png)
+![](../images/92-258.png)
 
-![](..\images\15.png)
+![](../images/15.png)
 
 **Objectives**
 
@@ -67,7 +67,7 @@ them. Each vertex consists of:
 
 Vertex Table for Airports
 
-![](..\images\16.png)
+![](../images/16.png)
 
 
 We define an RDD with the above properties that is then used for the vertices.
@@ -95,7 +95,7 @@ properties. In our example, an edge consists of:
 
 Edges Table for Routes
 
-![](..\images\17.png)
+![](../images/17.png)
 
 We define an RDD with the above properties that is then used for the edges. The edge RDD has the form
 (src id, dest id, distance).

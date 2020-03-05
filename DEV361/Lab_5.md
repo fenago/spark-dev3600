@@ -25,7 +25,7 @@ Our dataset is a .csv file that consists of SFPD incident data from SF OpenData 
 For each incident, we have the following information:
 Field
 
-![](..\images\5.png)
+![](../images/5.png)
 
 The dataset has been modified to decrease the size of the files, to make it easier to use. We will use this same dataset for all the labs in this course.
 
@@ -181,7 +181,7 @@ _____________________________________________________________________________
 This activity illustrates how joins work in Spark (Scala). There are two small datasets provided for this
 activity: J_AddCat.csv and J_AddDist.csv.
 
-![](..\images\6.png)
+![](../images/6.png)
 
 Based on the data above, answer the following questions:
 1. Given these two datasets, you want to find the type of incident and district for each address. What
@@ -338,13 +338,13 @@ catJdist.______________________________________________________
 
 <h4><span style="color:red;">Answers</span></h4>
 
-![](..\images\7.png)
+![](../images/7.png)
 
 
-![](..\images\8.png)
+![](../images/8.png)
 
 
-![](..\images\9.png)
+![](../images/9.png)
 
 ### Lab 4.3.1: Explore Partitioning in Pair RDDs
 

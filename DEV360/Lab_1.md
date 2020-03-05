@@ -26,7 +26,7 @@ Our dataset is a CSV file that consists of online auction data. Each auction has
 with it and can have multiple bids. Each row represents a bid. For each bid, we have the following
 information:
 
-![](..\images\1.png)
+![](../images/1.png)
 
 We load this data into Spark first using RDDs and then using Spark DataFrames.
 In both activities, we will use the Spark Interactive Shell.
@@ -230,7 +230,7 @@ auctionsDF.________________________________________________________
 4. We would like a count of bids per auction and the item type (as shown below). How would you do
 this? (HINT: Use groupBy.)
 
-![](..\images\2.png)
+![](../images/2.png)
 
 auctionsDF.________________________________________________________
 ___________________________________________________________________
@@ -278,12 +278,12 @@ xboxes._______________________________
 3. 3
 5. MIN(count) =1; AVG(count)= 16.992025518341308; MAX(count) = 75
 6. 
-    ![](..\images\8.png)
+    ![](../images/8.png)
 
 7. 7685
 8. Statistics:
 
-    ![](..\images\4.png)
+    ![](../images/4.png)
 
 
 **Note:** Solutions are also in the file Lab2_1.txt from which you can copy and paste into the

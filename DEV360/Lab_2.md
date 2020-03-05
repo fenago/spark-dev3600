@@ -34,7 +34,7 @@ specified, you will get an error when you perform actions on the Dataset.
 import spark.implicits._
 4. Define case class. The case class defines the table schema. You specify the name of the class,
 each field, and type. Below is the list of fields and type:
-![](..\images\19.png)
+![](../images/19.png)
 
 To define the case class Incidents, complete the statement below:
 case class Incidents(incidentnum:String, category:String,
