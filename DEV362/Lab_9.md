@@ -666,6 +666,8 @@ mlprep.take(1)
 ## Create Labeled Points
 From the RDD containing feature arrays, we create an RDD containing arrays of LabeledPoints.
 A labeled point is a class that represents the feature vector and label of a data point.
+
+```
 //Making LabeledPoint of features – this is the training data for
 the model
 
@@ -696,8 +698,7 @@ testData.take(1)
 
 //res21: Array[org.apache.spark.mllib.regression.LabeledPoint] =
 Array((0.0,[18.0,6.0,900.0,1225.0,6.0,385.0,214.0,294.0]))
-
-
+```
 
 ## Train the Model
 
@@ -710,11 +711,9 @@ month and can take the values from zero through to 31. The second one represents
 week and can take the values from one though seven. The carrier value can go from four to the
 number of distinct carriers and so on.
 
--maxDepth: Maximum depth of a tree.
-
--maxBins: Number of bins used when discretizing continuous features.
-
--impurity: Impurity measure of the homogeneity of the labels at the node.
+- maxDepth: Maximum depth of a tree.
+- maxBins: Number of bins used when discretizing continuous features.
+- impurity: Impurity measure of the homogeneity of the labels at the node.
 
 The model is trained by making associations between the input features and the labeled output
 associated with those features. We train the model using the DecisionTree.trainClassifier
@@ -798,4 +797,3 @@ res35: Long = 11040
 val ratioWrong=wrongPrediction.count().toDouble/testData.count()
 ratioWrong: Double = 0.3157443157443157
 ```
-

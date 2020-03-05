@@ -10,7 +10,7 @@ There is no requirement for any setup.
 
 **Note:** Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
-All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
+All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control- V**
 
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab8`
 
@@ -38,8 +38,7 @@ property, as shown below:
 - Launch the Spark Interactive Shell
 
 In this activity, we will use the Spark Interactive Shell.
-- To launch the Interactive Shell, run the following command at the command line:
-spark-shell --master local[2]
+- To launch the Interactive Shell, run the following command at the command line: `spark-shell --master local[2]`
 
 ## Define Vertices
 Open the file 09_Graphx_Lab_Shell_1.scala in your favorite editor. All the shell commands are
@@ -59,9 +58,9 @@ import org.apache.spark.graphx._
 
 We define airports as vertices. Vertices have an ID and can have properties or attributes associated with
 them. Each vertex consists of:
--Vertex ID -> id (Long)
 
--Vertex Property -> name (String)
+- Vertex ID -> id (Long)
+- Vertex Property -> name (String)
 
 Vertex Table for Airports
 
