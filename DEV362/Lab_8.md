@@ -331,6 +331,8 @@ there, or you can copy paste from this document.
 
 First we will import the GraphX packages. In the code boxes, comments are in green and output is in
 blue.
+
+```
 import org.apache.spark._
 
 import org.apache.spark.rdd.RDD
@@ -360,9 +362,12 @@ line(10).toDouble, line(11).toDouble, line(12).toDouble,
 line(13).toDouble, line(14).toDouble, line(15).toDouble,
 line(16).toInt)
 }
+```
 
 Below we load the data from the CSV file into a Resilient Distributed Dataset (RDD). RDDs can have
 transformations and actions, the first() action returns the first element in the RDD.
+
+```
 // load the data into an RDD
 
 val textRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/rita2014jan.csv")
@@ -371,11 +376,12 @@ val textRDD = sc.textFile("/home/jovyan/work/spark-dev3600/data/rita2014jan.csv"
 
 // parse the RDD of csv lines into an RDD of flight classes
 val flightsRDD = textRDD.map(parseFlight).cache()
-
+```
 
 
 We define airports as vertices. Vertices can have properties or attributes associated with them. Each
 vertex has the following property:
+
 -Airport name (String)
 
 Vertex Table for Airports
@@ -388,6 +394,8 @@ Property(V)
 ATL
 
 We define an RDD with the above properties that is then used for the Vertexes .
+
+```
 // create airports RDD with ID and Name
 
 val airports = flightsRDD.map(flight => (flight.org_id,
@@ -403,6 +411,7 @@ val nowhere = "nowhere"
 val airportMap = airports.map { case ((org_id), name) => (org_id ->
 name) }.collect.toList.toMap
 // Map(13024 -> LMT, 10785 -> BTV,…)
+```
 
 Define Edges
 Edges are the routes between airports. An edge must have a source, a destination, and can have
@@ -501,6 +510,8 @@ graph.triplets.take(3).foreach(println)
 ((10140,ABQ),(10397,ATL),1269)
 
 5. Compute the highest degree vertex.
+
+```
 // Define a reduce operation to compute the highest degree
 vertex
 
@@ -534,6 +545,8 @@ airportMap(10397)
 res70: String = ATL
 
 6. Which airport has the most incoming flights?
+
+```
 // get top 3
 
 val maxIncoming = graph.inDegrees.collect.sortWith(_._2 >
@@ -542,11 +555,15 @@ maxIncoming.foreach(println)
 (ATL,152)
 (ORD,145)
 (DFW,143)
+
+```
 // which airport has the most outgoing flights?
 
 val maxout= graph.outDegrees.join(airports).sortBy(_._2._1,
 ascending=false).take(3)
 maxout.foreach(println)
+```
+
 (10397,(153,ATL))
 (13930,(146,ORD))
 (11298,(143,DFW))
@@ -554,12 +571,16 @@ maxout.foreach(println)
 
 
 7. What are the top 10 flights from airport to airport?
+
+```
 // get top 10 flights airport to airport
 
 graph.triplets.sortBy(_.attr, ascending=false).map(triplet =>
 "There were " + triplet.attr.toString + " flights from " +
 triplet.srcAttr + " to " + triplet.dstAttr + ".").take(3)
 .foreach(println)
+```
+
 There were 4983 flights from JFK to HNL
 
 There were 4983 flights from HNL to JFK.
