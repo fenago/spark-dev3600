@@ -1,0 +1,22 @@
+// Lab 3.1: Explore SFPD Data
+
+// 1. What are the top 5 Districts?
+val incByDist = sfpdDS.groupBy("pddistrict").count.sort($"count".desc).show(5)
+                     
+val incByDistSQL = spark.sql("SELECT pddistrict, count(incidentnum) AS inccount FROM sfpd GROUP BY pddistrict ORDER BY inccount DESC LIMIT 5")
+incByDistSQL.show
+
+// 2. What are the top ten resolutions?
+val top10Res = sfpdDS.groupBy("resolution").count.sort($"count".desc)
+val top10ResSQL = spark.sql("SELECT resolution, count(incidentnum) AS inccount FROM sfpd GROUP BY resolution ORDER BY inccount DESC LIMIT 10")
+top10Res.show(10)
+
+// 3. What are the top 3 categories?
+val top3Cat = sfpdDS.groupBy("category").count.sort($"count".desc).show(3)
+val top3CatSQL=spark.sql("SELECT category, count(incidentnum) AS inccount FROM sfpd GROUP BY category ORDER BY inccount DESC LIMIT 3")
+top3CatSQL.show
+
+
+// 4. Save the top 10 resolutions to a JSON file.
+top10ResSQL.write.format("json").mode("overwrite").save("/user/user01/output")
+
