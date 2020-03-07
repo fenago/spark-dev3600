@@ -1,7 +1,7 @@
 // Lab 2.3a: Load Data and Create a Dataset Using Reflection
 
 // 1. Launch the shell
-/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master yarn
+/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master local[2]
 
 // 2. Load the data 
 val sfpdDF = spark.read.format("csv").option("inferSchema", true).load("/home/jovyan/work/spark-dev3600/data/sfpd.csv").toDF("incidentnum", "category", "description", "dayofweek", "date", "time", "pddistrict", "resolution", "address", "X", "Y", "pdid")

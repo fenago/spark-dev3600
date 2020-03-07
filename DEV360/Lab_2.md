@@ -8,7 +8,9 @@
 #### Lab Environment
 There is no requirement for any setup.
 
-**Note:** Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
+**Note:** 
+- Answers and solutions can be found in the files which are already opened in jupyertLab editor. Copy and paste the solution in the terminal(s) running spark-shell(Scala) or pyspark(Python).
+- Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
 All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
 
@@ -21,21 +23,28 @@ Estimated time to complete: 20 minutes
 
 1. While logged into the cluster as user01, use the following command to launch the shell in Scala:
 
-`spark-shell --master yarn`
+`spark-shell`
 
 **Note:** The lab environment has Spark loaded.
+
 2. Load the data from the file sfpd.csv, which was unzipped earlier:
 val sfpdDF = spark.read.format("csv").option("inferSchema",
 true).load("/home/jovyan/work/spark-dev3600/data/sfpd.csv").toDF("incidentnum",
 "category", "description", "dayofweek", "date", "time",
 "pddistrict", "resolution", "address", "x", "y", "pdid")
 
-Caution! Use the correct file path to sfpd.csv. If you do not have the correct path
+**Caution!** Use the correct file path to `sfpd.csv`. If you do not have the correct path
 specified, you will get an error when you perform actions on the Dataset.
+
 3. Import required classes:
+
+```
 import spark.implicits._
+```
+
 4. Define case class. The case class defines the table schema. You specify the name of the class,
 each field, and type. Below is the list of fields and type:
+
 ![](../images/19.png)
 
 To define the case class Incidents, complete the statement below:
@@ -48,9 +57,9 @@ address:__________, x:__________, y:__________, pdid:__________)
 val sfpdDS = sfpdDF.________________________________________________
 6. Register the Dataset as a table called sfpd.
 
-Q: Why register the Dataset as a table?
+**Q:** Why register the Dataset as a table?
 
-A: Registering a Dataset as a table enables you to query it using SQL.
+**A:** Registering a Dataset as a table enables you to query it using SQL.
 
 ## Lab 2.3b: Word Count Using Datasets (Optional)
 

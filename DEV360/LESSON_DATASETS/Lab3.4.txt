@@ -1,7 +1,7 @@
 // Lab3.4: Analyze Data Using UDFs and Queries	
 
 // Open spark-shell
-/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master yarn
+/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master local[2]
 
 // Import spark.implicits
 import spark.implicits._

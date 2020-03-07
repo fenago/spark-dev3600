@@ -8,7 +8,9 @@
 #### Lab Environment
 There is no requirement for any setup.
 
-**Note:** Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
+**Note:** 
+- Answers and solutions can be found in the files which are already opened in jupyertLab editor. Copy and paste the solution in the terminal(s) running spark-shell(Scala) or pyspark(Python).
+- Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
 All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
 
@@ -88,8 +90,7 @@ val auctionRDD =
 sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(_.split(","))
 ```
 
-<span style="color:red;">Caution!</span> If you do not have the correct path to the file auctiondata.csv, you will get an
-error when you perform any actions on the RDD.
+<span style="color:red;">Caution!</span> If you do not have the correct path to the file auctiondata.csv, you will get an error when you perform any actions on the RDD.
 
 ### Lab 2.1.3: Inspect the Data
 Now that we have loaded the data into Spark, let’s learn a little more about the data. Find Answers
@@ -136,6 +137,10 @@ ___________________________________________________________________
 and the solutions to the questions by referring to the files Lab2_1.scala (for Scala) or
 Lab2_1.py (for Python).. The solutions in Scala and Python are provided.
 
+<h4><span style="color:red;">Run Python Shell</span></h4>
+
+To launch the Python shell: `pyspark`
+
 ### Lab 2.2: Use DataFrames to load data into Spark
 
 Estimated time to complete: 30 minutes
@@ -179,9 +184,7 @@ openbid:Float,price:Float, itemtype:String,dtl:Int)
 ```
 
 
-4. Create an RDD inputRDD using sc.textFile to load the data from
-**/home/jovyan/work/spark-dev3600/data/aucitondata.csv**. Also, make sure that you split the input file based
-on the separator.
+4. Create an RDD inputRDD using sc.textFile to load the data from /home/jovyan/work/spark-dev3600/data/aucitondata.csv. Also, make sure that you split the input file based on the separator.
 
 ```
 val inputRDD =
@@ -269,15 +272,16 @@ xboxes._______________________________
 
 **Lab 2.2.2**
 
-1. 10654
-2. 627
-3. 3
-5. MIN(count) =1; AVG(count)= 16.992025518341308; MAX(count) = 75
-6. 
+1- 10654
+2- 627
+3- 3
+5- MIN(count) =1; AVG(count)= 16.992025518341308; MAX(count) = 75
+6- 
+
     ![](../images/8.png)
 
-7. 7685
-8. Statistics:
+7- 7685
+8- Statistics:
 
     ![](../images/4.png)
 
@@ -376,7 +380,5 @@ xboxes.select("auctionid", "price").distinct.describe("price").show
 
 **Note:** Solutions for Python can be found in the file Lab2_2.py from which you can copy
 and paste into the Interactive shell.
-
-
 
 
