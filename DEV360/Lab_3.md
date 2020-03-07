@@ -67,7 +67,7 @@ attempting to remove temporary files without first making sure they exist.
 5. Open an additional terminal window. At the Linux command prompt, verify that the data was
 saved to the file:
 
-`cd /mapr/<cluster name>/home/jovyan/work/spark-dev3600/output`
+`cd /home/jovyan/work/spark-dev3600/output`
 
 `cat part-00000...`
 
