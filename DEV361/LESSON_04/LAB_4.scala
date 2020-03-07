@@ -66,7 +66,7 @@ catJdist2.collect()
 catJdist2.count()
 
 // How many partitions are there in the sfpdRDD?
-sfpdRDD.partitions.size()
+sfpdRDD.partitions.size
 
 // How do you find the type of partitioner?
 sfpdRDD.partitioner
@@ -75,7 +75,7 @@ sfpdRDD.partitioner
 val incByDists = sfpdRDD.map(incident => (incident(PdDistrict), 1)).reduceByKey((x, y) => x + y)
 
 // How many partitions does this have?
-incByDists.partitions.size()
+incByDists.partitions.size
 
 // What is the type of partitioner?
 incByDists.partitioner
@@ -84,7 +84,7 @@ incByDists.partitioner
 val inc_map = incByDists.map(x => (x._2, x._1))
 
 // Is there a change in the size?
-inc_map.partitions.size()
+inc_map.partitions.size
 
 // What about the type of partitioner?
 inc_map.partitioner
@@ -99,7 +99,7 @@ inc_group.partitioner
 
 // Specify partition size in the transformation
 val incByDists = sfpdRDD.map(incident => (incident(PdDistrict), 1)).reduceByKey((x , y) => x + y, 10)
-incByDists.partitions.size()
+incByDists.partitions.size
 
 // Create pairRDDs
 val catAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(x => x.split(",")).map(x => (x(1), x(0)))
@@ -107,5 +107,5 @@ val distAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").
 
 // Join and specify partitions, then check the number of partitions and the partitioner
 val catJdist = catAdd.join(distAdd, 8)
-catJdist.partitions.size()
+catJdist.partitions.size
 catjDist.partitioner

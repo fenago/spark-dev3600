@@ -398,7 +398,7 @@ PdId = 11
 To load the file:
 
 ```
-sfpdRDD=sc.textFile("/path/to/file/sfpd.csv").map(lambda
+sfpdRDD=sc.textFile("/home/jovyan/work/spark-dev3600/data/sfpd.csv").map(lambda
 line:line.split(","))
 ```
 
@@ -491,9 +491,9 @@ catJdist2.count
 
 **Note:** Solutions are also in the file Lab4.py from which you can copy and paste into the
 Interactive shell.
-5. catAdd=sc.textFile("/path/to/file/J_AddCat.csv").map(lambda
+5. catAdd=sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(lambda
 x:x.split(",")).map(lambda x:(x[1],x[0]))
-distAdd=sc.textFile("/path/to/file/J_AddDist.csv").map(lambda
+distAdd=sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(lambda
 x:x.split(",")).map(lambda x:(x[1],x[0]))
 6. catJdist=catAdd.join(distAdd)
 catJDist.collect

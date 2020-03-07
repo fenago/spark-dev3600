@@ -331,7 +331,7 @@ dtl = 8
 To load the file:
 
 ```
-auctionRDD=sc.textFile("/path/to/file/auctiondata.csv").map(lambda
+auctionRDD=sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(lambda
 line:line.split(","))
 ```
 

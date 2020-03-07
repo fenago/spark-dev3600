@@ -33,9 +33,6 @@ sfpdRDD.map(lambda inc: inc[Resolution]).distinct().count()
 # List all the districts
 sfpdRDD.map(lambda inc: inc[PdDistrict]).distinct().collect()
 
-# Which five districts have the highest incidents?
-sfpdRDD.map(lambda incident: (incident[PdDistrict], 1)).reduceByKey(lambda x, y: x + y).map(lambda x: (x[1], x[0])).sortByKey(False).take(5)
-
 # Which five addresses have the highest number of incidents?
 sfpdRDD.map(lambda incident: (incident[Address], 1)).reduceByKey(lambda x, y: x + y).map(lambda x: (x[1], x[0])).sortByKey(False).take(5)
 
@@ -46,14 +43,13 @@ sfpdRDD.map(lambda incident: (incident[Category], 1)).reduceByKey(lambda x, y: x
 sfpdRDD.map(lambda incident: (incident[PdDistrict], 1)).countByKey()
 
 # Load two datasets into separate pairRDDs with “address” being the key
-catAdd = sc.textFile("/path/to/file/J_AddCat.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
-distAdd = sc.textFile("/path/to/file/J_AddDist.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
+catAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
+distAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
 
 # List the incident category and district for those addresses that have both category and district information
 catJdist = catAdd.join(distAdd)
-catJDist.collect()
+catJdist.collect()
 catJdist.count()
-catJdist.take(10)
 
 # List the incident category and district for all addresses irrespective of whether each address has category and district information
 catJdist1 = catAdd.leftOuterJoin(distAdd)
@@ -75,7 +71,7 @@ sfpdRDD.partitioner
 incByDists = sfpdRDD.map(lambda incident: (incident[PdDistrict], 1)).reduceByKey(lambda x, y: x + y)
 
 # How many partitions does this have?
-incByDists.partitions.size()
+incByDists.partitioner("size")
 
 # What is the type of partitioner?
 incByDists.partitioner
@@ -83,14 +79,11 @@ incByDists.partitioner
 # Now add a map transformation
 inc_map = incByDists.map(lambda x: (x[1], x[0]))
 
-# Is there a change in the size?
-inc_map.partitions.size()
-
 # What about the type of partitioner?
 inc_map.partitioner
 
 # Add sort by key
-inc_sort = inc_map.sortByKey(false)
+inc_sort = inc_map.sortByKey(False)
 inc_sort.partitioner
 
 # Add group by key
@@ -99,7 +92,7 @@ inc_group.partitioner
 
 # Specify partition size in the transformation
 incByDists = sfpdRDD.map(lambda incident: (incident[PdDistrict], 1)).reduceByKey(lambda x, y: x + y, 10)
-incByDists.partitions.size()
+incByDists.partitioner("size")
 
 # Create pairRDDs
 catAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(lambda x: x.split(",")).map(lambda x: (x[1], x[0]))
@@ -107,5 +100,5 @@ distAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(
 
 # Join and specify partitions, then check the number of partitions and the partitioner
 catJdist = catAdd.join(distAdd, 8)
-catJdist.partitions.size()
-catjDist.partitioner
+catJdist.partitioner("size")
+catJdist.partitioner
