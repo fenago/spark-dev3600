@@ -35,11 +35,9 @@ Estimated time to complete: 15 minutes
 
 **Objectives**
 
--Launch the Spark interactive shell
-
--Load data into Spark
-
--Explore data in Apache Spark
+- Launch the Spark interactive shell
+- Load data into Spark
+- Explore data in Apache Spark
 
 #### Lab 4.1.1: Launch the Spark Interactive Shell
 The Spark interactive shell is available in Scala or Python.
@@ -51,7 +49,7 @@ To launch the Interactive Shell, run the following command at the command line:
 
 
 To quit the Scala Interactive shell, use the command:
-> `exit`
+> `:q`
 
 #### Lab 4.1.2: Load Data into Spark
 The data we want to load is in the auctiondata.csv file. To load the data, we are going to use the
@@ -115,7 +113,7 @@ _________________________________________________________________
 Estimated time to complete: 25 minutes
 
 In the previous activity, we explored the data in the sfpdRDD. We used RDD operations. In this activity,
-we will create pair RDD to find <h4><span style="color:red;">Answers</span></h4>
+we will create pair RDD to Find Answers
  to questions about the data.
 
 **Objectives**
@@ -363,7 +361,7 @@ sfpdRDD has two partitions.
 #### Lab 4.1.3 – Scala
 
 
-**Note:** Solutions are also in the file Lab4.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab4.scala from which you can copy and paste into the
 Interactive shell.
 1. sfpdRDD.first()
 2. sfpdRDD.take(5)
@@ -377,7 +375,7 @@ To launch the Python shell:
 $ `pyspark`
 
 
-**Note:** Solutions are also in the file Lab4_py.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab4.py from which you can copy and paste into the
 Interactive shell.
 To map input variables:
 
@@ -419,7 +417,7 @@ print dists
 
 ## Lab 4.2.1 – Scala
 
-**Note:** Solutions are also in the file Lab4.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab4.scala from which you can copy and paste into the
 Interactive shell.
 1. val top5Dists =
 sfpdRDD.map(incident=>(incident(PdDistrict),1)).reduceByKey((x,y)=>x+y)
@@ -435,7 +433,7 @@ sfpdRDD.map(incident=>(incident(PdDistrict),1)).countByKey()
 
 ## Lab 4.3.1 – Python
 
-**Note:** Solutions are also in the file Lab4_py.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab4.py from which you can copy and paste into the
 Interactive shell.
 1. top5Dists=sfpdRDD.map(lambda
 incident:(incident[PdDistrict],1)).reduceByKey(lambda
@@ -473,7 +471,7 @@ left outer join is 13.
 Lab 4.2.2 – Scala
 
 
-**Note:** Solutions are also in the file Lab4.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab4.scala from which you can copy and paste into the
 Interactive shell.
 5. val catAdd =
 sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(x=>x.split(","))
@@ -495,7 +493,7 @@ catJdist2.count
 
 ## Lab 4.2.2 – Python
 
-**Note:** Solutions are also in the file Lab4_py.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab4.py from which you can copy and paste into the
 Interactive shell.
 5. catAdd=sc.textFile("/path/to/file/J_AddCat.csv").map(lambda
 x:x.split(",")).map(lambda x:(x[1],x[0]))
@@ -526,6 +524,6 @@ catJdist2.count
 
 ## Lab 4.3.2 – Python
 
-**Note:** Solutions are also in the file Lab4_py.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab4.py from which you can copy and paste into the
 Interactive shell.
 

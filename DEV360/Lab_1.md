@@ -38,11 +38,9 @@ You should see the data files there (auctiondata.csv, sfpd.csv, etc.).
 
 **Objectives**
 
--Launch the Spark interactive shell
-
--Load data into Spark
-
--Use transformations and actions to inspect the data
+- Launch the Spark interactive shell
+- Load data into Spark
+- Use transformations and actions to inspect the data
 
 ### Lab 2.1.1: Launch the Spark Interactive Shell
 The Spark interactive shell is available in Scala or Python.
@@ -55,7 +53,7 @@ The Spark interactive shell is available in Scala or Python.
 
 
 **Note:** To quit the Scala Interactive shell, use the command
-> `exit`
+> `:q`
 
 **Note:** There are four modes for running Spark. For training purposes, we are using local
 mode. When you are running bigger applications, you should use a mode with a multiple VMs.
@@ -94,9 +92,8 @@ sc.textFile("/home/jovyan/work/spark-dev3600/data/auctiondata.csv").map(_.split(
 error when you perform any actions on the RDD.
 
 ### Lab 2.1.3: Inspect the Data
-Now that we have loaded the data into Spark, let’s learn a little more about the data. Find <h4><span style="color:red;">Answers</span></h4>
- to the
-questions listed below.
+Now that we have loaded the data into Spark, let’s learn a little more about the data. Find Answers
+to the questions listed below.
 
 What transformations and actions would you use in each case? Complete the command with the
 appropriate transformations and actions.
@@ -135,11 +132,9 @@ val avgbids = bidsItemRDD._________________________________________
 ___________________________________________________________________
 
 
-
-**Note:** Find the <h4><span style="color:red;">Answers</span></h4>
- and the solutions to the questions at the end of Lab 2. The solutions in
-Scala and Python are provided. You can also refer to the files Lab2_1.txt (for Scala) or
-Lab2_1_py.txt (for Python).
+**Note:** Find the <span style="color:red;">Answers</span>
+and the solutions to the questions by referring to the files Lab2_1.scala (for Scala) or
+Lab2_1.py (for Python).. The solutions in Scala and Python are provided.
 
 ### Lab 2.2: Use DataFrames to load data into Spark
 
@@ -147,9 +142,8 @@ Estimated time to complete: 30 minutes
 
 **Objectives**
 
--Load data into Spark DataFrames using the Interactive Shell
-
--Explore the data in the DataFrame
+- Load data into Spark DataFrames using the Interactive Shell
+- Explore the data in the DataFrame
 
 **Note:** For a review on DataFrame actions and functions, refer to the Appendix.
 
@@ -161,9 +155,11 @@ basic SQLContext, we need a SparkContext. In the interactive shell, we already h
 SparkContext as the variable sc.
 
 1. Launch the interactive shell:
+
 `spark-shell --master local[2]`
 
 2. Create a SQLContext:
+
 `val sqlContext = new org.apache.spark.sql.SQLContext(sc)`
 
 Since we are going to convert an RDD implicitly to a DataFrame:	
@@ -286,7 +282,7 @@ xboxes._______________________________
     ![](../images/4.png)
 
 
-**Note:** Solutions are also in the file Lab2_1.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab2_1.scala from which you can copy and paste into the
 Interactive shell.
 
 
@@ -311,7 +307,7 @@ Interactive shell.
 To launch the Python shell,
 $ `pyspark`
 
-**Note:** Solutions are also in the file Lab2_1_py.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab2_1.py from which you can copy and paste into the
 Interactive shell.
 
 To map input variables:
@@ -359,7 +355,7 @@ print avgbids
 
 # Lab 2.2.2 – Scala
 
-**Note:** Solutions are also in the file Lab2_2.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab2_2.scala from which you can copy and paste into the
 Interactive shell.
 
 1. val totalbids = auctionsDF.count()
@@ -378,7 +374,7 @@ FROM auctionsDF WHERE itemtype='xbox'")
 To compute statistics on the price column:
 xboxes.select("auctionid", "price").distinct.describe("price").show
 
-**Note:** Solutions for Python can be found in the file Lab2_2_py.txt from which you can copy
+**Note:** Solutions for Python can be found in the file Lab2_2.py from which you can copy
 and paste into the Interactive shell.
 
 

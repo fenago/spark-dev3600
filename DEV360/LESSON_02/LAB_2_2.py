@@ -1,5 +1,5 @@
 # Launch the interactive pyspark shell
-# $ /opt/mapr/spark/spark-1.6.1/bin/pyspark
+# $ pyspark
 
 # Create a SQL context
 from pyspark.sql import SQLContext, Row

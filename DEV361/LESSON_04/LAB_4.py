@@ -1,5 +1,5 @@
 # Launch the interactive pyspark shell
-# $ /opt/mapr/spark/spark-1.6.1/bin/pyspark
+# $ pyspark
 
 # Map input variables
 IncidntNum = 0

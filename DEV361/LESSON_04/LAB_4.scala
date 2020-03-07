@@ -1,5 +1,5 @@
 // Launch the interactive spark shell
-// $ /opt/mapr/spark/spark-1.6.1/bin/spark-shell --master local[2]
+// $ spark-shell --master local[2]
 
 // Map input variables
 val IncidntNum = 0

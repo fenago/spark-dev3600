@@ -1,8 +1,7 @@
-// Get the current spark version
-// $ ls /opt/mapr/spark
+
 
 // Launch the interactive spark shell
-// $ /opt/mapr/spark/spark-1.6.1/bin/spark-shell --master local[2]
+// $ spark-shell --master local[2]
 
 // Import libraries and declare column variables
 import java.lang.Math
@@ -54,4 +53,4 @@ val totitems = auctionRDD.map(_(auctionid)).distinct().count()
 totbids / totitems
 
 // Exit the spark shell
-exit
+:q

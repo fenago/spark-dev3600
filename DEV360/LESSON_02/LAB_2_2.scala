@@ -1,5 +1,5 @@
 // Launch the interactive spark shell
-// $ /opt/mapr/spark/spark-1.6.1/bin/spark-shell --master local[2]
+// $ spark-shell --master local[2]
 
 // Create a SQL context
 val sqlContext = new org.apache.spark.sql.SQLContext(sc)
@@ -54,4 +54,4 @@ val xboxes = sqlContext.sql("SELECT auctionid, itemtype, bid, price, openbid FRO
 xboxes.describe("price").show()
 
 // Exit the spark shell
-exit
+:q

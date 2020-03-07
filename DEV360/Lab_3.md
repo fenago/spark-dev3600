@@ -18,10 +18,12 @@ You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab3`
 
 ## Lab 3.1: Explore and Save SFPD Data
 Estimated time to complete: 20 minutes
+
 In this activity, you will use Dataset operations and SQL to explore the data in the Datasets. Use Dataset
 operations or SQL queries to answer the questions below.
-If you want to try out your queries, log in to the cluster as user01. You can start the spark shell and run
+You can start the spark shell and run
 your answers to test them.
+
 1. What are the five districts with the most number of incidents? Hint: Use groupBy; count;
 sort. You can use show(5) to show five elements.
 val incByDist = sfpdDS._____________________________________________

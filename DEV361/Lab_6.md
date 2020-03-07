@@ -47,7 +47,7 @@ To launch the Interactive Shell, at the command line, run the following command:
 `spark-shell --master local[2]`
 
 **Note:** To quit the Scala Interactive shell, use the command
-`exit`
+`:q`
 
 ## Lab 5.1.2: Create RDD
 The data we want to load is in the file sfpd.csv. To load the data, we are going to use the
@@ -165,7 +165,7 @@ Estimated time to complete: 20 minutes
 The date field in this dataset is a String of the form “mm/dd/yy”. We are going to create a function to
 extract the year from the date field. There are two ways to use user defined functions with Spark
 DataFrames. You can define it inline and use it within DataFrame operations or use it in SQL queries.
-We can then find <h4><span style="color:red;">Answers</span></h4>
+We can then Find Answers
  to questions such as: What is the number of incidents by year?
 
 **Objectives**
@@ -250,7 +250,7 @@ application using DataFrames that:
 
 ## Solutions
 
-**Note:** Solutions are also in the file Lab5.txt from which you can copy and paste into the
+**Note:** Solutions are also in the file Lab5.scala from which you can copy and paste into the
 Interactive shell.
 
 ## Lab 5.1.2 – Scala

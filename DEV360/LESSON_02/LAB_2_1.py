@@ -1,5 +1,5 @@
 # Launch the interactive pyspark shell
-# $ /opt/mapr/spark/spark-1.6.1/bin/pyspark
+# $ pyspark
 
 # Declare column variables
 auctionid = 0

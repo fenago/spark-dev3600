@@ -19,7 +19,9 @@ The data directory contains data files that will be used in exercises.
 ## Lab 2.3a: Load Data and Create Datasets Using Reflection
 Estimated time to complete: 20 minutes
 
-1. While logged into the cluster as user01, use the following command to launch the shell in Scala: `spark-shell --master yarn`
+1. While logged into the cluster as user01, use the following command to launch the shell in Scala:
+
+`spark-shell --master yarn`
 
 **Note:** The lab environment has Spark loaded.
 2. Load the data from the file sfpd.csv, which was unzipped earlier:
@@ -42,8 +44,6 @@ description:__________, dayofweek:__________, date:__________,
 time:__________, pddistrict:__________, resolution:__________,
 address:__________, x:__________, y:__________, pdid:__________)
 
-Lesson 2: Create Datasets
-
 5. Convert the DataFrame into a Dataset of Incidents using the as method:
 val sfpdDS = sfpdDF.________________________________________________
 6. Register the Dataset as a table called sfpd.
@@ -58,6 +58,7 @@ Estimated time to complete: 30 minutes
 
 Try this! Try this optional lab on your own, or in class if you finish the other lab early. Follow
 the steps below to implement Word Count using Datasets.
+
 1. Launch the Spark shell, if it is not already running.
 2. Load the Dataset with the file /home/jovyan/work/spark-dev3600/data/wordcount.txt using SparkSession’s
 read.text method. Assign the type as string.
@@ -70,4 +71,4 @@ using groupByKey.
 
 <h4><span style="color:red;">Lesson 2 Answer Key</span></h4>
 
-**Note:** Answers can be found in the files which are already in jupyertLab editor.
+**Note:** Answers can be found in the files which are already opened in jupyertLab editor.

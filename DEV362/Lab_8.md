@@ -222,8 +222,7 @@ at the command line:
 `spark-shell --master local[2]`
 
 
-**Note:** To quit the Scala Interactive Shell, use the command:
-`exit`
+**Note:** To quit the Scala Interactive Shell, use the command: `:q`
 
 ### Define Vertices
 
