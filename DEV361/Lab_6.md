@@ -233,15 +233,11 @@ application using DataFrames that:
 
 **High Level steps:**
 
--Use Lab 5.1 to load the data
-
--Use Lab 5.2.1 to create the DataFrame and register as a table
-
--Refer to Lab 5.2.2 to get the top three categories
-
--Refer to Lab 5.3 to create a UDF that extracts the year
-
--Refer to Lab 5.2.2 to save to a JSON file
+- Use Lab 5.1 to load the data
+- Use Lab 5.2.1 to create the DataFrame and register as a table
+- Refer to Lab 5.2.2 to get the top three categories
+- Refer to Lab 5.3 to create a UDF that extracts the year
+- Refer to Lab 5.2.2 to save to a JSON file
 
 <h4><span style="color:red;">Answers</span></h4>
 

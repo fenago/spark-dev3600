@@ -120,11 +120,9 @@ we will create pair RDD to Find Answers
 
 **Objectives**
 
--Create pair RDD
-
--Apply pair RDD operations
-
--Join pair RDD
+- Create pair RDD
+- Apply pair RDD operations
+- Join pair RDD
 
 ### Lab 4.2.1: Create pair RDD and apply pair RDD operations
 
@@ -142,9 +140,7 @@ _______________________________________________________________________
 b. Use reduceByKey((a,b)=>a+b) to get the count of incidents in each district. Your
 result will be a pair RDD of the form [(PdDistrict, count)]:
 _______________________________________________________________________
-c.
-
-Use map again to get a pair RDD of the form [(count, PdDistrict)]:
+c. Use map again to get a pair RDD of the form [(count, PdDistrict)]:
 _______________________________________________________________________
 
 d. Use sortByKey(false) on [(count, PdDistrict)]:
@@ -154,21 +150,21 @@ _______________________________________________________________________
 
 
 2. Which five addresses have the highest incidents?
-a. Create pair RDD (map).
-b. Get the count for key (reduceByKey).
-c.
 
-Pair RDD with key and count switched (map).
+    a. Create pair RDD (map).
+    b. Get the count for key (reduceByKey).
+    c. Pair RDD with key and count switched (map).
+    d. Sort in descending order (sortByKey).
+    e. Use take(5) to get the top five.
+    _____________________________________________________________________________
+    _____________________________________________________________________________
+    _____________________________________________________________________________
 
-d. Sort in descending order (sortByKey).
-e. Use take(5) to get the top five.
-_____________________________________________________________________________
-_____________________________________________________________________________
-_____________________________________________________________________________
 3. What are the top three categories of incidents?
 _____________________________________________________________________________
 _____________________________________________________________________________
 _____________________________________________________________________________
+
 4. What is the count of incidents by district?
 _____________________________________________________________________________
 ____________________________________________________________________________
@@ -178,8 +174,7 @@ _____________________________________________________________________________
 
 # Lab 4.2.2: Join Pair RDDs
 
-This activity illustrates how joins work in Spark (Scala). There are two small datasets provided for this
-activity: J_AddCat.csv and J_AddDist.csv.
+This activity illustrates how joins work in Spark (Scala). There are two small datasets provided for this activity: J_AddCat.csv and J_AddDist.csv.
 
 ![](../images/6.png)
 
@@ -437,6 +432,7 @@ sfpdRDD.map(incident=>(incident(PdDistrict),1)).countByKey()
 
 **Note:** Solutions are also in the file Lab4.py from which you can copy and paste into the
 Interactive shell.
+
 1. top5Dists=sfpdRDD.map(lambda
 incident:(incident[PdDistrict],1)).reduceByKey(lambda
 x,y:x+y).map(lambda x:(x[2],x[1])).sortByKey(false).take(5)
@@ -453,7 +449,7 @@ x:(x[2],x[1])).sortByKey(false).take(3)
 incident:(incident[PdDistrict],1)).countByKey()
 8. print num_inc_dist
 
-Lab 4.2.2
+## Lab 4.2.2
 1. You can use joins on pairs or pairRDD to get the information. The key for the pairRDD is the
 address.
 2. A join is the same as an inner join and only keys that are present in both RDDs are output. If you
@@ -470,8 +466,7 @@ source RDD contains data from J_AddCat.csv and the “other” RDD is represente
 J_AddDist.csv, then since “source” RDD has 13 distinct addresses, the size of the result of a
 left outer join is 13.
 
-Lab 4.2.2 – Scala
-
+## Lab 4.2.2 – Scala
 
 **Note:** Solutions are also in the file Lab4.scala from which you can copy and paste into the
 Interactive shell.
@@ -485,7 +480,6 @@ sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(x=>x.split
 catJDist.collect
 catJdist.count
 catJdist.take(10)
-
 7. val catJdist1 = catAdd.leftOuterJoin(distAdd)
 catJdist1.collect
 catJdist.count

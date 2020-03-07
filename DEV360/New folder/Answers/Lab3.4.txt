@@ -38,8 +38,6 @@ strAfter
 
 //Execute query to get address, resolution, date, time for burglaries in 2015
 val data2015 = spark.sql("select address, resolution, date, time from sfpd where getYear(date)='15'")
-	  
-// 5. Save this to a JSON file in a folder /home/jovyan/work/spark-dev3600/appoutput */
 
 data2015.write.format("json").mode("overwrite").save("/home/jovyan/work/spark-dev3600/appoutput")
 
