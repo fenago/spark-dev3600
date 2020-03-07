@@ -24,7 +24,7 @@ Lab 2. Instead of using the Interactive Shell, you will run a python script.
 ### Python Application
 Since you wrote your application in Python, then you can pass the .py file directly to spark-submit.
 
-`spark-submit filename.py --master local[2]`
+`spark-submit work/spark-dev3600/DEV360/auctions_app.py`
 
 **Note:** The filename is the name of the Python file (for example: AuctionsApp.py).
 --master refers to the master URL. It points to the URL of the cluster. You can also specify

@@ -31,9 +31,9 @@ minbids = bids_auctionRDD.map(lambda x: x[bid]).reduce(min)
 avgbids = totalbids / totalitems
 
 # Print output to the console
-print "Total bids across all auctions: %d " %(totalbids)
-print "Total number of distinct items: %d " %(totalitems)
-print "Max bids across all auctions: %d " %(maxbids)
-print "Min bids across all auctions: %d " %(minbids)
-print "Avg bids across all auctions: %d " %(avgbids)
-print "DONE"                                                         
+print ("Total bids across all auctions: %d " %(totalbids))
+print ("Total number of distinct items: %d " %(totalitems))
+print ("Max bids across all auctions: %d " %(maxbids))
+print ("Min bids across all auctions: %d " %(minbids))
+print ("Avg bids across all auctions: %d " %(avgbids))
+print ("DONE")                                                   
