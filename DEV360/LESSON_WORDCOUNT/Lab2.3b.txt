@@ -1,7 +1,7 @@
 // Lab 2.3b: Word Count Using Datasets
 
 // 1. Launch the interactive shell:
-/opt/mapr/spark/spark-2.1.0/bin/spark-shell --master local[2]
+spark-shell --master local[2]
 
 // 2. Load data the Dataset using SparkSession’s read.text method and assign type as string.
 val dataDS = spark.read.text("/home/jovyan/work/spark-dev3600/data/wordcount.txt").as[String]

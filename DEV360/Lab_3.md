@@ -26,7 +26,7 @@ operations or SQL queries to answer the questions below.
 You can start the spark shell and run
 your answers to test them.
 
-1. What are the five districts with the most number of incidents? Hint: Use groupBy; count;
+1. What are the five districts with the most number of incidents? **Hint:**  Use groupBy; count;
 sort. You can use show(5) to show five elements.
 val incByDist = sfpdDS._____________________________________________
 ____________________________________________________________________
@@ -38,11 +38,13 @@ ORDER BY inccount <SORT ORDER> LIMIT <number of records>")
 
 val incByDistSQL = spark.sql("_________________________________
 __________________________________________________________________")
+
 2. What are the top 10 resolutions?
 val top10Res = sfpdDS.______________________________________________
 ____________________________________________________________________
 val top10ResSQL = spark.sql("__________________________________
 __________________________________________________________________")
+
 3. What are the top three categories of incidents?
 val top3Cat = sfpdDS.______________________________________________
 ___________________________________________________________________
@@ -52,7 +54,7 @@ __________________________________________________________________")
 4. Save the top 10 resolutions to a JSON file in the folder /home/jovyan/work/spark-dev3600/output in the cluster
 file system.
 
-Hint: Use: DS.write.format("json").mode("<mode type>").save("<path
+**Hint:**  Use: DS.write.format("json").mode("<mode type>").save("<path
 to file>")
 If the path to the output directory exists, you will get an error. Delete it first or add
 logic to remove the directory (if it exists) before saving.
@@ -81,7 +83,7 @@ Q: What do you need to do to use this function in SQL queries?
 
 A: Register this function as a UDF. Use spark.udf.register.
 
-Hint: Function_Definition:
+**Hint:**  Function_Definition:
 def getyear(s:String):String = {
 val year = ___________________________________________
 
@@ -121,5 +123,4 @@ attempting to remove temporary files without first making sure they exist.
 
 <h4><span style="color:red;">Lesson 3 Answer Key</span></h4>
 
-Note: Answers can be found in files which were downloaded at the beginning of the course,
-to `/home/jovyan/work/spark-dev3600/Answers`.
+Answers can be found in the files which are already opened in jupyertLab editor. Copy and paste the solution in the terminal(s) running spark-shell(Scala) or pyspark(Python).

@@ -96,7 +96,7 @@ inc(3), inc(4),inc(5), inc(6), inc(7), inc(8), inc(9).toFloat,
 inc(10).toFloat, inc(11)))
 ```
 
-4. Implicitly convert resulting RDD of case objects into a DataFrame. (Hint: Use to.DF() method
+4. Implicitly convert resulting RDD of case objects into a DataFrame. (**Hint:**  Use to.DF() method
 on RDD)
 val sfpdDF = ___________________________________
 5. Register the DataFrame as a table called sfpd.
@@ -116,11 +116,11 @@ DataFrame operations or SQL queries to answer the questions below.
 - https://spark.apache.org/docs/1.3.1/sql-programming-guide.html
 - https://spark.apache.org/docs/1.3.1/api/scala/index.html#org.apache.spark.sql.DataFrame
 
-1. What are the top five districts with the most number of incidents? (Hint: Use groupBy; count;
+1. What are the top five districts with the most number of incidents? (**Hint:**  Use groupBy; count;
 sort. You can use show(5) to show five elements.)
 val incByDist = sfpdDF.__________________________________________
 _________________________________________________________________
-Hint: You pass in the SQL query within the parenthesis. For example:
+**Hint:**  You pass in the SQL query within the parenthesis. For example:
 sqlContext.sql("SELECT <column>, count(incidentnum)
 AS inccount FROM <DataFrame Table> GROUP BY <column>
 ORDER BY inccount <SORT ORDER> LIMIT <number of records>")
@@ -147,7 +147,7 @@ _______________________________________________________________")
 
 
 
-Hint: Use DF.toJSON.saveAsTextFile
+**Hint:**  Use DF.toJSON.saveAsTextFile
 
 
 **Note:** This method has been deprecated in Spark 1.4. Use:
@@ -228,7 +228,7 @@ application using DataFrames that:
 - Registers the DataFrame as a table
 - Prints the top three categories to the console
 - Finds the address, resolution, date and time for burglaries in 2015
-- Saves this to a JSON file in a folder /<user home>/appoutput
+- Saves this to a JSON file in a folder /home/jovyan/work/spark-dev3600/appoutput
 
 
 **High Level steps:**
