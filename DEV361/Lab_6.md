@@ -46,6 +46,7 @@ The Spark interactive shell is available in Scala or Python.
 **Note:** All instructions here are for Scala.
 
 To launch the Interactive Shell, at the command line, run the following command:
+
 `spark-shell --master local[2]`
 
 **Note:** To quit the Scala Interactive shell, use the command

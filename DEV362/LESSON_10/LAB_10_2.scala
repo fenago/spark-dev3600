@@ -11,7 +11,7 @@ case class Flight(dofM: String, dofW: String, carrier: String, tailnum: String, 
 
 def parseFlight(str: String): Flight = {
   val line = str.split(",")
-  Flight(line(0), line(1), line(2), line(3), line(4).toInt, line(5), line(6), line(7), line(8), line(9).toDouble(), line(10).toDouble(), line(11).toDouble(), line(12).toDouble(), line(13).toDouble(), line(14).toDouble(), line(15).toDouble(), line(16).toInt())
+  Flight(line(0), line(1), line(2), line(3), line(4).toInt, line(5), line(6), line(7), line(8), line(9).toDouble, line(10).toDouble, line(11).toDouble, line(12).toDouble, line(13).toDouble, line(14).toDouble, line(15).toDouble, line(16).toInt)
 }
 
 // Creating and RDD with the January 2014 data to be used for training the model
@@ -35,16 +35,16 @@ flightsRDD.map(flight => flight.dest).distinct.collect.foreach(x => { destMap +=
 
 // Defining the features array
 val mlprep = flightsRDD.map(flight => {
-  val monthday = flight.dofM.toInt() - 1
-  val weekday = flight.dofW.toInt() - 1
-  val crsdeptime1 = flight.crsdeptime.toInt()
-  val crsarrtime1 = flight.crsarrtime.toInt()
+  val monthday = flight.dofM.toInt - 1
+  val weekday = flight.dofW.toInt - 1
+  val crsdeptime1 = flight.crsdeptime.toInt
+  val crsarrtime1 = flight.crsarrtime.toInt
   val carrier1 = carrierMap(flight.carrier)
-  val crselapsedtime1 = flight.crselapsedtime.toDouble()
+  val crselapsedtime1 = flight.crselapsedtime.toDouble
   val origin1 = originMap(flight.origin)
   val dest1 = destMap(flight.dest)
-  val delayed = if (flight.depdelaymins.toDouble() > 40) 1.0 else 0.0
-  Array(delayed.toDouble(), monthday.toDouble(), weekday.toDouble(), crsdeptime1.toDouble(), crsarrtime1.toDouble(), carrier1.toDouble(), crselapsedtime1.toDouble(), origin1.toDouble(), dest1.toDouble())
+  val delayed = if (flight.depdelaymins.toDouble > 40) 1.0 else 0.0
+  Array(delayed.toDouble, monthday.toDouble, weekday.toDouble, crsdeptime1.toDouble, crsarrtime1.toDouble, carrier1.toDouble, crselapsedtime1.toDouble, origin1.toDouble, dest1.toDouble)
 })
 mlprep.take(1)
 
@@ -77,7 +77,7 @@ val maxDepth = 9
 val maxBins = 7000
 
 val model = DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo, impurity, maxDepth, maxBins)
-model.toDebugString()
+model.toDebugString
 testData.take(1)
 
 val labelAndPreds = testData.map { point =>
@@ -91,7 +91,7 @@ val wrongPrediction = (labelAndPreds.filter {
 })
 wrongPrediction.count()
 
-val ratioWrong = wrongPrediction.count().toDouble() / testData.count() 
+val ratioWrong = wrongPrediction.count().toDouble / testData.count() 
 testData.count()
 
 // Find delay predicted when there was no delay
@@ -103,5 +103,5 @@ falsePositives.count()
 val falseNegatives = (labelAndPreds.filter(r => (r._2 == 0 && r._1 == 1)))
 falseNegatives.count()
 
-val fpRatio = falsePositives.count().toDouble() / testData.count()
-val fnRatio = falseNegatives.count().toDouble() / testData.count()
+val fpRatio = falsePositives.count().toDouble / testData.count()
+val fnRatio = falseNegatives.count().toDouble / testData.count()

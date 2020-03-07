@@ -86,7 +86,7 @@ maxout.foreach(println)
 // (11298,(143,DFW))
 
 // What are the most important airports according to PageRank?
-val ranks = graph.pageRank(0.1).vertices()
+val ranks = graph.pageRank(0.1).vertices
 val impAirports = ranks.join(airports).sortBy(_._2._1, false).map(_._2._2)
 impAirports.take(4)
 // Array(ATL, ORD, DFW, DEN)

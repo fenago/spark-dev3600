@@ -45,7 +45,7 @@ graph.triplets.sortBy(_.attr, ascending=false).map(triplet => "Distance " + trip
 // Distance 800 from ORD to DFW
 
 // What are the most important airports according to PageRank 
-val ranks = graph.pageRank(0.1).vertices()
+val ranks = graph.pageRank(0.1).vertices
 ranks.take(3)
 // Array((2,0.47799375), (1,0.47799375), (3,0.47799375))
 

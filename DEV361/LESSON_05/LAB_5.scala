@@ -2,7 +2,11 @@
 // $ spark-shell --master local[2]
 
 // Imports
-import sqlContext._
+//import sqlContext._
+//import sqlContext.implicits._
+
+// Create a SQL context
+val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 import sqlContext.implicits._
 
 // Define case class to convert to data frame
