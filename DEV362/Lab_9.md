@@ -39,14 +39,12 @@ In this tutorial we will perform the following steps:
 
 ## Lab 10.1: Load and Inspect Data using Spark Shell
 Estimated time to complete: 10 minutes
-Log in to your Sandbox or cluster, as explained in the Connection Guide.
-$ ssh –p port user01@<ipaddress>
-
 
 To launch the Interactive Shell, at the command line, run the following command:
-spark-shell --master local[2]
 
-The Sample Data Set
+`spark-shell --master local[2]`
+
+**The Sample Data Set**
 
 ![](../images/101.png)
 
@@ -116,6 +114,8 @@ fields(2).toInt,fields(3).toInt, fields(4).toString)
 Below we load the data from the ratings.dat file into a Resilient Distributed Dataset (RDD). RDDs can
 have transformations and actions. The first() action returns the first element in the RDD, which is the
 String “1::1193::5::978300760”
+
+```
 // load the data into an RDD
 
 val ratingText = sc.textFile("/home/jovyan/work/spark-dev3600/moviemed/ratings.dat")
@@ -125,11 +125,10 @@ val ratingText = sc.textFile("/home/jovyan/work/spark-dev3600/moviemed/ratings.d
 ratingText.first()
 
 // String = 1::1193::5::978300760
+```
+
 We use the org.apache.spark.mllib.recommendation.Rating class for parsing the ratings.dat
 file. Later we will use the Rating class as input for the ALS run method.
-
-
-
 
 Then we use the map transformation on ratingText, which will apply the parseRating function to
 each element in ratingText and return a new RDD of Rating objects. We cache the ratings data, since
@@ -799,3 +798,4 @@ res35: Long = 11040
 val ratioWrong=wrongPrediction.count().toDouble/testData.count()
 ratioWrong: Double = 0.3157443157443157
 ```
+

@@ -21,7 +21,7 @@ The data directory contains data files that will be used in exercises.
 ## Lab 2.3a: Load Data and Create Datasets Using Reflection
 Estimated time to complete: 20 minutes
 
-1. While logged into the cluster as user01, use the following command to launch the shell in Scala:
+1. Use the following command to launch the shell in Scala:
 
 `spark-shell`
 

@@ -70,6 +70,7 @@ sensorDF.take(20).foreach(println)
 ```
 9. Explore the data set with some queries. First, group by the sensor ID and date, and retrieve the
 average PSI:
+
 ```
 csvDF.groupBy("resid", "date").agg(avg(col("psi"))).show()
 ```
@@ -100,6 +101,7 @@ import org.apache.spark.sql.types.StructType
 `mkdir -p ~/work/spark-dev3600/stream`
 5. Back in the Spark window, create a schema for the csv file so that we can process the csv stream
 directly into an unbounded dataframe:
+
 ```
 val userSchema = new StructType().add("resid", "string").add("date",
 "string").add("time", "string").add("hz", "double").add("disp",
@@ -112,6 +114,7 @@ val userSchema = new StructType().add("resid", "string").add("date",
 val sensorCsvDF = spark.readStream.option("sep",
 ",").schema(userSchema).csv("/home/jovyan/work/spark-dev3600/stream/")
 ```
+
 7. Finally, use the writeStream.format("console").start()method to display the
 contents of the stream on screen:
 

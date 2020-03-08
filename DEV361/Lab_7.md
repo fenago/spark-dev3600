@@ -22,7 +22,7 @@ You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab7`
 Estimated time to complete: 15 minutes
 
 In this activity, you will look at Spark execution components in the Spark UI.
-1. As the user user01, launch the spark interactive shell, if it’s not already running.
+1. Launch the spark interactive shell, if it’s not already running `spark-shell`
 2. Load the data:
 
 ```
@@ -111,13 +111,13 @@ Use the Spark Web UI (`http://<host-ip>:4040`) to answer the following questions
 6. Which property gives you the location of Java on the system?
 
 Some examples of Spark properties are listed below.
-    - **spark.executor.memory** – This indicates the amount of memory to be used per executor.
-    - **spark.serializer** – Class used to serialize objects that will be sent over the network. Use the org.apache.spark.serializer.JavaSerializer class to get better performance, since
+- **spark.executor.memory** – This indicates the amount of memory to be used per executor.
+- **spark.serializer** – Class used to serialize objects that will be sent over the network. Use the org.apache.spark.serializer.JavaSerializer class to get better performance, since
     the default java serialization is quite slow.
-    - **spark.kryo.registrator** – Class used to register the custom classes if you use the Kyro
+- **spark.kryo.registrator** – Class used to register the custom classes if you use the Kyro
     serialization
-    - **org.apache.spark.sql.Encoders** – Specialized class used to serialize Dataset objects
-    - **spark.local.dir** – Locations that Spark uses as scratch space to store the map output files.
+- **org.apache.spark.sql.Encoders** – Specialized class used to serialize Dataset objects
+- **spark.local.dir** – Locations that Spark uses as scratch space to store the map output files.
 
 **Environment Variables:** Some of the Spark settings can be configured using the environment variables
 that are defined in the conf/spark-env.sh script file. These are machine-specific settings, such as
