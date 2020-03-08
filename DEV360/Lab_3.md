@@ -11,10 +11,10 @@ There is no requirement for any setup.
 
 
 **Note:** 
-- Answers and solutions can be found in the files which are already opened in jupyertLab editor. Copy and paste the solution in the terminal(s) running spark-shell(Scala) or pyspark(Python).
-- Elev8ed Notebooks (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
+- Answers and solutions can be found in the files which are already opened in jupyertLab editor. Copy and paste the solution in the terminal(s) after running command `spark-shell` (for Scala) or `pyspark` (for Python).
+- Spark Labs (powered by Jupyter) will be accessible at the port given to you by your instructor. Password for jupyterLab : `1234`
 
-All Notebooks are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
+All labs are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control-V**
 
 You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab3`
 
@@ -115,10 +115,13 @@ application using DataFrames. High-level steps are listed below:
 4. Find the address, resolution, date, and time for burglaries in 2015 (refer to Lab 3.1).
 5. Save this to a JSON file in a folder /home/jovyan/work/spark-dev3600/appoutput in the cluster (refer to Lab 3.1).
 
-Note: You may encounter the following message: “ERROR MapRFileSystem:
-Failed to delete path maprfs:/… error: No such file or
-directory (2)”. This is a known issue in Spark 2.1 that you can ignore; Spark is
+Note: You may encounter the following message: 
+
+“ERROR : Failed to delete path :/… error: No such file or directory (2)”. 
+
+This is a known issue in Spark 2.1 that you can ignore; Spark is
 attempting to remove temporary files without first making sure they exist.
+
 6. Exit the scala shell using :q.
 
 <h4><span style="color:red;">Lesson 3 Answer Key</span></h4>

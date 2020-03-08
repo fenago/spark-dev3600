@@ -33,4 +33,5 @@ Labs for this course are available at path shared below. Elev8ed Labs (powered b
 		* <host-ip>:<port>/lab/workspaces/lab8
 9. ##### Apache Spark MLlib
 		* <host-ip>:<port>/lab/workspaces/lab9
-
+10. ##### Build a Simple Apache Spark Application
+		* <host-ip>:<port>/lab/workspaces/lab10
