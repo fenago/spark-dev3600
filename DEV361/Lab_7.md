@@ -54,20 +54,22 @@ Answer the following questions:
 val totres = resolutionDF.count
 ```
 
-6. Verify above output is: 
+6. Verify above code output is: 
 
 ```
 scala> val totres = resolutionDF.count
 totres: Long = 17   
 ```
 
-7. Run following instuctions.
-
-8. Cache resolutionDF and run the count again so the DataFrame is cached. Then run count
-again to use the cached DataFrame.
+7. Cache resolutionDF by running: 
 
 ```
 resolutionDF.cache()
+```
+
+8. Run the count again so the DataFrame is cached. Then run count again to use the cached DataFrame.
+
+```
 resolutionDF.count
 resolutionDF.count
 ```
