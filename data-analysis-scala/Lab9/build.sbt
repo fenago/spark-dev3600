@@ -1,4 +1,4 @@
-name := "HandsOnScala-Chapter9"
+name := "Lab9"
 
 version := "0.1"
 
