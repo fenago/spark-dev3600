@@ -14,7 +14,7 @@ There is no requirement for any setup.
 
 All labs are present in `work/spark-dev3600` folder. To copy and paste: use **Control-C** and to paste inside of a terminal, use **Control- V**
 
-You can access jupyter lab at `<host-ip>:<port>/lab/workspaces/lab8`
+You can access jupyter lab at `http://<lab-environment>/lab/workspaces/lab8`
 
 <h4><span style="color:red;">Analyzing a Simple Flight Example with GraphX</span></h4>
 

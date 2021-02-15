@@ -165,13 +165,6 @@ processing, which can also be used with Scala code seamlessly. 
 #### JSON
 
 
-
-[**JavaScript Object Notation**]
-([**JSON**]) <http://json.org/> is an extremely popular
-data format. One of the greatest advantages
-of this format is its simplicity and
-programming-language neutrality. 
-
 We will use the Scala `json4s`
 (<http://json4s.org/>) library to work with JSON data. We will be using
 a native library that is the same or similar to the Scala
@@ -1151,29 +1144,6 @@ data visualization. This could be a tool of choice if the data volumes
 are not very large. As mentioned earlier, Spark and Vegas would be
 better for processing and visualizing large datasets.
 
-
-
-Creating a data pipeline 
-------------------------------------------
-
-
-
-We have so far looked at data analysis life cycle tasks in isolation. In
-the real world, these tasks need to be connected together to
-create a cohesive solution. Data pipelines
-are about creating end-to-end, data-oriented solutions.
-
-Spark supports [**ML pipelines**]
-(<https://spark.apache.org/docs/2.3.0/ml-pipeline.html>). We will look
-at Spark and how to use Spark\'s ML pipeline functionality in subsequent
-chapters.
-
-Jupyter Notebooks (<http://jupyter.org/>) is another great option for
-creating an integrated data pipeline.
-Papermill (<https://github.com/nteract/papermill>) is an open
-source project that helps parameterize
-and run Jupyter Notebooks. We will explore
-some of these options in subsequent chapters.
 
 
 

@@ -13,25 +13,25 @@ Apache Spark is an open-source distributed general-purpose cluster-computing fra
 
 ### Labs
 
-Labs for this course are available at path shared below. Elev8ed Labs (powered by Jupyter) will be accessible at the port given to you by your instructor. 
+Labs for this course are available at path shared below.
 
 1. ##### Load and Inspect Data
-		* <host-ip>:<port>/lab/workspaces/lab1
+		* http://<lab-environment>/lab/workspaces/lab1
 2. ##### Create Datasets
-		* <host-ip>:<port>/lab/workspaces/lab2
+		* http://<lab-environment>/lab/workspaces/lab2
 3. ##### Apply Operations on Datasets
-		* <host-ip>:<port>/lab/workspaces/lab3
+		* http://<lab-environment>/lab/workspaces/lab3
 4. ##### Build a Simple Spark Application
-		* <host-ip>:<port>/lab/workspaces/lab4
+		* http://<lab-environment>/lab/workspaces/lab4
 5. ##### Work with Pair RDD
-		* <host-ip>:<port>/lab/workspaces/lab5
+		* http://<lab-environment>/lab/workspaces/lab5
 6. ##### Create DataFrame Using Reflection
-		* <host-ip>:<port>/lab/workspaces/lab6
+		* http://<lab-environment>/lab/workspaces/lab6
 7. ##### Monitor Apache Spark Applications
-		* <host-ip>:<port>/lab/workspaces/lab7
+		* http://<lab-environment>/lab/workspaces/lab7
 8. ##### Use Apache Spark GraphX to Analyze Flight Data
-		* <host-ip>:<port>/lab/workspaces/lab8
+		* http://<lab-environment>/lab/workspaces/lab8
 9. ##### Apache Spark MLlib
-		* <host-ip>:<port>/lab/workspaces/lab9
+		* http://<lab-environment>/lab/workspaces/lab9
 10. ##### Build a Simple Apache Spark Application
-		* <host-ip>:<port>/lab/workspaces/lab10
+		* http://<lab-environment>/lab/workspaces/lab10
