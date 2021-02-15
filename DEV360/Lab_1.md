@@ -278,12 +278,12 @@ xboxes._______________________________
 5- MIN(count) =1; AVG(count)= 16.992025518341308; MAX(count) = 75
 6- 
 
-    ![](../images/8.png)
+![](../images/8.png)
 
 7- 7685
 8- Statistics:
 
-    ![](../images/4.png)
+![](../images/4.png)
 
 
 **Note:** Solutions are also in the file Lab2_1.scala from which you can copy and paste into the

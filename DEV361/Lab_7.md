@@ -80,7 +80,7 @@ resolutionDF.count
     b. How many stages does this job have? Were any stages skipped?
     c. How many tasks in each stage? Are there any skipped tasks?
 
-    ![](../images/701.png)
+![](../images/701.png)
 
 10. Since you have cached the DataFrame, explore the Storage tab and answer the following
 questions:
