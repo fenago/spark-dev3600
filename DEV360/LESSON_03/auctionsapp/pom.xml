@@ -12,7 +12,7 @@
         <encoding>UTF-8</encoding>
         <scala.tools.version>2.11</scala.tools.version>
         <scala.version>2.11.8</scala.version>
-        <spark.version>2.1.0-mapr-1707</spark.version>
+        <spark.version>2.4.8</spark.version>
     </properties>  
     <repositories>
         <repository>
