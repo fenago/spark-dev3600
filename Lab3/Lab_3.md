@@ -74,6 +74,10 @@ saved to the file:
 
 `cat part-00000...`
 
+<span style="color:red;">spark-shell Output</span>
+
+![](../images/output3.png)
+
 ## Lab 3.3: Create and Use User-Defined Functions (UDFs)
 Estimated time to complete: 20 minutes
 
@@ -118,6 +122,10 @@ month in 2014 had the most incidents.
 ## Lab 3.4 Analyze Data Using UDFs and Queries
 Estimated time to complete: 30 minutes
 
+**Note:** Make sure to exit existing spark-shell using `:q` command and start new one:
+
+`spark-shell --master local[2]`
+
 <span style="color:red;">Solution File: </span> `Lab3.4.txt`
 
 Now that you have explored DataFrames and created simple user-defined functions, build a standalone
@@ -139,4 +147,4 @@ attempting to remove temporary files without first making sure they exist.
 
 <h4><span style="color:red;">Lesson 3 Answer Key</span></h4>
 
-Answers can be found in the files which are already opened in jupyertLab editor. Copy and paste the solution in the terminal(s) running spark-shell(Scala) or pyspark(Python).
+Answers can be found in the files which are already present in the lab folder. Copy and paste the solution in the terminal(s) running spark-shell(Scala) or pyspark(Python).

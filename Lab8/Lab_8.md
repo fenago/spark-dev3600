@@ -219,8 +219,8 @@ In this activity we will use the Spark Interactive Shell. The Spark Interactive 
 
 **Note:** All instructions here are for Scala.
 
-SSH into your MapR Sandbox or cluster node. To launch the Interactive Shell, run the following command
-at the command line:
+To launch the Interactive Shell, run the following command at the command line:
+
 `spark-shell --master local[2]`
 
 

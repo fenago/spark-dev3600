@@ -25,17 +25,14 @@ Estimated time to complete: 20 minutes
 
 1. Use the following command to launch the shell in Scala:
 
-`spark-shell`
+`spark-shell --master local[2]`
 
 **Note:** The lab environment has Spark loaded.
 
 2. Load the data from the file sfpd.csv, which was unzipped earlier:
 
 ```
-val sfpdDF = spark.read.format("csv").option("inferSchema",
-true).load("/home/jovyan/work/spark-dev3600/data/sfpd.csv").toDF("incidentnum",
-"category", "description", "dayofweek", "date", "time",
-"pddistrict", "resolution", "address", "x", "y", "pdid")
+val sfpdDF = spark.read.format("csv").option("inferSchema", true).load("/home/jovyan/work/spark-dev3600/data/sfpd.csv").toDF("incidentnum", "category", "description", "dayofweek", "date", "time", "pddistrict", "resolution", "address", "X", "Y", "pdid")
 ```
 
 **Caution!** Use the correct file path to `sfpd.csv`. If you do not have the correct path
@@ -53,18 +50,26 @@ each field, and type. Below is the list of fields and type:
 ![](../images/19.png)
 
 To define the case class Incidents, complete the statement below:
+
+```
 case class Incidents(incidentnum:String, category:String,
 description:__________, dayofweek:__________, date:__________,
 time:__________, pddistrict:__________, resolution:__________,
 address:__________, x:__________, y:__________, pdid:__________)
+```
 
 5. Convert the DataFrame into a Dataset of Incidents using the as method:
-val sfpdDS = sfpdDF.________________________________________________
+`val sfpdDS = sfpdDF.________________________________________________`
+
 6. Register the Dataset as a table called sfpd.
 
 **Q:** Why register the Dataset as a table?
 
 **A:** Registering a Dataset as a table enables you to query it using SQL.
+
+<span style="color:red;">spark-shell Output</span>
+
+![](../images/output1.png)
 
 ## Lab 2.3b: Word Count Using Datasets (Optional)
 
@@ -86,6 +91,6 @@ using groupByKey.
 5. Count each word in the group in the count method.
 6. Display the results using show or collect methods.
 
-<h4><span style="color:red;">Lesson 2 Answer Key</span></h4>
+<span style="color:red;">spark-shell Output</span>
 
-**Note:** Answers can be found in the files which are already opened in jupyertLab editor.
+![](../images/output2.png)

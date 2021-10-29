@@ -45,7 +45,7 @@ Estimated time to complete: 15 minutes
 #### Lab 4.1.1: Launch the Spark Interactive Shell
 The Spark interactive shell is available in Scala or Python.
 
-**Note:** Solution is present in the file LAB_5.scala from which you can copy and paste into the interactive shell.
+**Note:** Solution is present in the file `LAB_5.scala` from which you can copy and paste into the interactive shell.
 
 To launch the Interactive Shell, run the following command at the command line:
 `spark-shell --master local[2]`
@@ -367,7 +367,7 @@ sfpdRDD has two partitions.
 #### Lab 4.1.3 – Scala
 
 
-**Note:** Solutions are also in the file LAB_5.scala from which you can copy and paste into the interactive shell.
+**Note:** Solutions are also in the file `LAB_5.scala` from which you can copy and paste into the interactive shell.
 
 1. sfpdRDD.first()
 2. sfpdRDD.take(5)
@@ -423,7 +423,7 @@ print dists
 
 ## Lab 4.2.1 – Scala
 
-**Note:** Solutions are also in the file LAB_5.scala from which you can copy and paste into the interactive shell.
+**Note:** Solutions are also in the file `LAB_5.scala` from which you can copy and paste into the interactive shell.
 
 1. val top5Dists =
 sfpdRDD.map(incident=>(incident(PdDistrict),1)).reduceByKey((x,y)=>x+y)
@@ -477,7 +477,7 @@ left outer join is 13.
 
 ## Lab 4.2.2 – Scala
 
-**Note:** Solutions are also in the file LAB_5.scala from which you can copy and paste in interactive shell.
+**Note:** Solutions are also in the file `LAB_5.scala` from which you can copy and paste in interactive shell.
 
 5. val catAdd =
 sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(x=>x.split(","))
@@ -524,7 +524,7 @@ catJdist2.count
 6. inc_group.partitioner
 7. incByDists.partitions.size
 8. catJdist.partitions.size
-9. catjDist.partitioner
+9. catJdist.partitioner
 
 
 ## Lab 4.3.2 – Python

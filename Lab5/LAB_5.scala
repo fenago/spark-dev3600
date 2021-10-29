@@ -108,4 +108,4 @@ val distAdd = sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").
 // Join and specify partitions, then check the number of partitions and the partitioner
 val catJdist = catAdd.join(distAdd, 8)
 catJdist.partitions.size
-catjDist.partitioner
+catJdist.partitioner

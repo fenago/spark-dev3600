@@ -40,6 +40,8 @@ Estimated time to complete: 20 minutes
 - Create RDD
 - Create DataFrame using reflection to infer schema
 
+**Note:** Solution is present in the file `LAB_6.scala` from which you can copy and paste into the interactive shell.
+
 ## Lab 5.1.1: Launch the Spark Interactive Shell
 The Spark interactive shell is available in Scala or Python.
 

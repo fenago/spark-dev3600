@@ -1,6 +1,6 @@
 <img align="right" src="../logo.png">
 
-# Lab : Build a Simple Spark Application
+# Lab : Build a Simple Spark Application - Python
 
 #### Pre-reqs:
 - Google Chrome (Recommended)
@@ -74,3 +74,7 @@ print "Min bids across all auctions: %d " %(minbids)
 print "Avg bids across all auctions: %d " %(avgbids)
 print "DONE"
 ```
+
+<span style="color:red;">spark-submit Output</span>
+
+![](../images/output4.png)

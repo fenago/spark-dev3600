@@ -82,6 +82,9 @@ resolutionDF.count
 
 ![](../images/701.png)
 
+<h4><span style="color:red;">Note:</span></h4>
+Make sure to verify spark UI port from spark-shell logs and replace default port (4040) with correct port.
+
 10. Since you have cached the DataFrame, explore the Storage tab and answer the following
 questions:
     a. How many partitions were cached?

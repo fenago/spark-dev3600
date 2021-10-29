@@ -1,5 +1,16 @@
 // Lab 3.1: Explore SFPD Data
 
+
+// Run following code snippet from Lab 2, incase you are using new spark-shell terminal.
+
+val sfpdDF = spark.read.format("csv").option("inferSchema", true).load("/home/jovyan/work/spark-dev3600/data/sfpd.csv").toDF("incidentnum", "category", "description", "dayofweek", "date", "time", "pddistrict", "resolution", "address", "X", "Y", "pdid")
+
+import spark.implicits._
+case class Incidents(incidentnum:String, category:String, description:String, dayofweek:String, date:String, time:String, pddistrict:String, resolution:String, address:String, X:Double, Y:Double, pdid:String)
+
+val sfpdDS = sfpdDF.as[Incidents]
+sfpdDS.createOrReplaceTempView("sfpd") 
+
 // 1. What are the top 5 Districts?
 val incByDist = sfpdDS.groupBy("pddistrict").count.sort($"count".desc).show(5)
                      

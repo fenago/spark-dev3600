@@ -38,7 +38,10 @@ In this tutorial we will perform the following steps:
 6. Test the model with the test data.
 
 ## Lab 10.1: Load and Inspect Data using Spark Shell
-Estimated time to complete: 10 minutes
+Estimated time to complete: 30 minutes
+
+**Note:** Open the file `LAB_9_1.scala` in your favorite editor. All the shell commands are
+there, or you can copy paste from this document.
 
 To launch the Interactive Shell, at the command line, run the following command:
 
@@ -494,11 +497,13 @@ rating.rating)).foreach(println)
 ```
 
 
-
 ## Lab 10.3: Analyze a simple flight example with decision trees
-Estimated time to complete: 15 minutes
+Estimated time to complete: 35 minutes
 
-Our data is from http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=OnTime. We are using flight information for January 2014. For each flight, we have the following information:
+**Note:** Open the file `LAB_9_2.scala` in your favorite editor. All the shell commands are
+there, or you can copy paste from this document.
+
+Our data is from https://transtats.bts.gov/ . We are using flight information for January 2014. For each flight, we have the following information:
 
 ![](../images/102.png)
 
