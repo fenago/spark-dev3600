@@ -286,8 +286,8 @@ xboxes._______________________________
 ![](../images/4.png)
 
 
-**Note:** Solutions are also in the file Lab2_1.scala from which you can copy and paste into the
-Interactive shell.
+**Note:** Solutions are also in the file Lab2_1.scala from which you can copy and paste in interactive shell.
+
 
 
 1. auctionRDD.first
@@ -311,8 +311,8 @@ Interactive shell.
 To launch the Python shell,
 $ `pyspark`
 
-**Note:** Solutions are also in the file Lab2_1.py from which you can copy and paste into the
-Interactive shell.
+**Note:** Solutions are also in the file Lab2_1.py from which you can copy and paste in interactive shell.
+
 
 To map input variables:
 
@@ -359,8 +359,8 @@ print avgbids
 
 # Lab 2.2.2 – Scala
 
-**Note:** Solutions are also in the file Lab2_2.scala from which you can copy and paste into the
-Interactive shell.
+**Note:** Solutions are also in the file Lab2_2.scala from which you can copy and paste in interactive shell.
+
 
 1. val totalbids = auctionsDF.count()
 2. val totalauctions = auctionsDF.select("aucid").distinct.count

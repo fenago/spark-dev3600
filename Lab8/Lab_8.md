@@ -43,7 +43,7 @@ In this activity, we will use the Spark Interactive Shell.
 - To launch the Interactive Shell, run the following command at the command line: `spark-shell --master local[2]`
 
 ## Define Vertices
-Open the file 09_Graphx_Lab_Shell_1.scala in your favorite editor. All the shell commands are
+Open the file `LAB_8_1.scala` in your favorite editor. All the shell commands are
 there, or you can copy paste from this document.
 First we will import the GraphX packages.
 
@@ -228,7 +228,7 @@ at the command line:
 
 ### Define Vertices
 
-Open the file   `09_Graphx_Lab_Shell_2.scala` in your favorite editor. All the shell commands are
+Open the file `LAB_8_2.scala` in your favorite editor. All the shell commands are
 there, or you can copy paste from this document.
 
 First we will import the GraphX packages. In the code boxes, comments are in green and output is in

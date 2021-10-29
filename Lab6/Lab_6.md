@@ -249,8 +249,7 @@ application using DataFrames that:
 
 ## Solutions
 
-**Note:** Solutions are also in the file Lab5.scala from which you can copy and paste into the
-Interactive shell.
+**Note:** Solutions are also in the file LAB_6.scala from which you can copy and paste in interactive shell.
 
 ## Lab 5.1.2 – Scala
 1. val sfpdRDD = sc.textFile("/path to file/sfpd.csv").map(_.split(","))
