@@ -1,4 +1,4 @@
-<img align="right" src="./logo-small.png">
+<img align="right" src="../logo.png">
 
 # Lab : Build a Simple Apache Spark Application
 
@@ -111,8 +111,7 @@ val userSchema = new StructType().add("resid", "string").add("date",
 
 6. Next, create an input stream:
 ```
-val sensorCsvDF = spark.readStream.option("sep",
-",").schema(userSchema).csv("/home/jovyan/work/spark-dev3600/stream/")
+val sensorCsvDF = spark.readStream.option("sep", ",").schema(userSchema).csv("/home/jovyan/work/spark-dev3600/stream/")
 ```
 
 7. Finally, use the writeStream.format("console").start()method to display the

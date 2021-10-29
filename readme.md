@@ -1,4 +1,4 @@
-<img align="right" src="./logo-small.png">
+<img align="right" src="./logo.png">
 
 
 # Apache Spark
