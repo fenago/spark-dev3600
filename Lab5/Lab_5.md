@@ -25,7 +25,7 @@ operations to explore the data.
 # Scenario
 Our dataset is a .csv file that consists of SFPD incident data from SF OpenData (https://data.sfgov.org/).
 For each incident, we have the following information:
-Field
+
 
 ![](../images/5.png)
 
@@ -41,14 +41,14 @@ Estimated time to complete: 15 minutes
 - Load data into Spark
 - Explore data in Apache Spark
 
+
 #### Lab 4.1.1: Launch the Spark Interactive Shell
 The Spark interactive shell is available in Scala or Python.
 
-**Note:** All instructions here are for Scala.
+**Note:** Solution is present in the file LAB_4.scala from which you can copy and paste into the interactive shell.
 
 To launch the Interactive Shell, run the following command at the command line:
 `spark-shell --master local[2]`
-
 
 To quit the Scala Interactive shell, use the command:
 > `:q`
@@ -57,6 +57,7 @@ To quit the Scala Interactive shell, use the command:
 The data we want to load is in the auctiondata.csv file. To load the data, we are going to use the
 SparkContext method textFile. The SparkContext is available in the interactive shell as the
 variable sc. We also want to split the file by the separator “,”.
+
 1. Define the mapping for our input variables. While this isn’t a necessary step, it makes it easier to
 refer to the different fields by names.
 
@@ -127,7 +128,8 @@ we will create pair RDD to Find Answers
 ### Lab 4.2.1: Create pair RDD and apply pair RDD operations
 
 **Note:** Find the answers and the solutions to the questions at the end of Lab 4. The solutions in
-Scala and Python are provided.
+spark-shell(scala):
+pyspark(python)
 
 1. Which five districts have the highest incidents?
 
@@ -267,9 +269,13 @@ sfpdRDD._________________________________________________________
 2. How do you find the type of partitioner for sfpdRDD?
 sfpdRDD._________________________________________________________
 3. Create a pair RDD.
+
+```
 val incByDists =
 sfpdRDD.map(incident=>(incident(PdDistrict),1)).reduceByKey((x,y)
 =>x+y)
+```
+
 a. How many partitions does incByDists have?
 incByDists.______________________________________________________
 b. What type of partitioner does incByDists have?
@@ -312,6 +318,7 @@ inc_group.______________________________________________________
 **A:** This is because groupByKey will automatically result in a hash partitioned RDD..
 
 7. Create two pairRDDs.
+```
 val catAdd =
 sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(x=>x.split(",")).
 map(x=>(x(1),x(0)))
@@ -319,6 +326,8 @@ map(x=>(x(1),x(0)))
 val distAdd =
 sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddDist.csv").map(x=>x.split(",")).
 map(x=>(x(1),x(0)))
+```
+
 8. You can specify the number of partitions when you use the join operation.
 val catJdist = catAdd.join(distAdd,8)
 a. How many partitions does the joined RDD have? _____
@@ -358,8 +367,8 @@ sfpdRDD has two partitions.
 #### Lab 4.1.3 – Scala
 
 
-**Note:** Solutions are also in the file Lab4.scala from which you can copy and paste into the
-Interactive shell.
+**Note:** Solutions are also in the file LAB_4.scala from which you can copy and paste into the interactive shell.
+
 1. sfpdRDD.first()
 2. sfpdRDD.take(5)
 3. val totincs = sfpdRDD.count()
@@ -414,8 +423,8 @@ print dists
 
 ## Lab 4.2.1 – Scala
 
-**Note:** Solutions are also in the file Lab4.scala from which you can copy and paste into the
-Interactive shell.
+**Note:** Solutions are also in the file LAB_4.scala from which you can copy and paste into the interactive shell.
+
 1. val top5Dists =
 sfpdRDD.map(incident=>(incident(PdDistrict),1)).reduceByKey((x,y)=>x+y)
 .map(x=>(x._2,x._1)) .sortByKey(false).take(3)
@@ -468,7 +477,7 @@ left outer join is 13.
 
 ## Lab 4.2.2 – Scala
 
-**Note:** Solutions are also in the file Lab4.scala from which you can copy and paste into the
+**Note:** Solutions are also in the file LAB_4.scala from which you can copy and paste into the
 Interactive shell.
 5. val catAdd =
 sc.textFile("/home/jovyan/work/spark-dev3600/data/J_AddCat.csv").map(x=>x.split(","))
@@ -520,6 +529,6 @@ catJdist2.count
 
 ## Lab 4.3.2 – Python
 
-**Note:** Solutions are also in the file Lab4.py from which you can copy and paste into the
+**Note:** Solutions are also in the file LAB_4.py from which you can copy and paste into the
 Interactive shell.
 

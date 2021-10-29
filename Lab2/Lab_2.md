@@ -21,6 +21,8 @@ The data directory contains data files that will be used in exercises.
 ## Lab 2.3a: Load Data and Create Datasets Using Reflection
 Estimated time to complete: 20 minutes
 
+<span style="color:red;">Solution File: </span> `Lab2.3a.txt`. Copy and paste code snippets in the spark-shell terminal
+
 1. Use the following command to launch the shell in Scala:
 
 `spark-shell`
@@ -67,6 +69,9 @@ val sfpdDS = sfpdDF.________________________________________________
 ## Lab 2.3b: Word Count Using Datasets (Optional)
 
 Estimated time to complete: 30 minutes
+
+<span style="color:red;">Solution File: </span> `Lab2.3b.txt`. Copy and paste code snippets in the spark-shell terminal
+
 
 Try this! Try this optional lab on your own, or in class if you finish the other lab early. Follow
 the steps below to implement Word Count using Datasets.

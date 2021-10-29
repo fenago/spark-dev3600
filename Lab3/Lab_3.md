@@ -20,6 +20,8 @@ You can access jupyter lab at `http://<lab-environment>/lab/workspaces/lab3`
 ## Lab 3.1: Explore and Save SFPD Data
 Estimated time to complete: 20 minutes
 
+<span style="color:red;">Solution File: </span> `Lab3.1.txt`. Make sure to use same `spark-shell` terminal used in Lab 2 or run `Lab2.3a.txt` commands again.
+
 In this activity, you will use Dataset operations and SQL to explore the data in the Datasets. Use Dataset
 operations or SQL queries to answer the questions below.
 You can start the spark shell and run
@@ -74,6 +76,9 @@ saved to the file:
 
 ## Lab 3.3: Create and Use User-Defined Functions (UDFs)
 Estimated time to complete: 20 minutes
+
+<span style="color:red;">Solution File: </span> `Lab3.3.txt`
+
 The date field in this Dataset is a string of the form mm/dd/yy. You are going to create a function to
 extract the year from the date field. There are two ways to use a UDF with Spark Datasets. You can
 define it inline and use it within Dataset operations or use it in SQL queries.
@@ -90,21 +95,30 @@ year
 }
 
 1. Register the UDF and define function that extracts characters after the last ‘/’ from the string:
-spark.udf.register.("<function_name>",<function_definition>)
-2. Using the registered the UDF in a SQL query, find the count of incidents by year and show the
-results:
+
+`spark.udf.register.("<function_name>",<function_definition>)`
+
+2. Using the registered the UDF in a SQL query, find the count of incidents by year and show the results:
+
+```
 val incyearSQL = spark.sql("SELECT getyear(date),
 count(incidentnum) AS countbyyear FROM sfpd
 GROUP BY getyear(date) ORDER BY countbyyear DESC")
+```
 3. Find and display the category, address, and resolution of incidents reported in 2014:
-val inc2014 = spark.sql("_______________________________________")
+`val inc2014 = spark.sql("_______________________________________")`
+
 4. Find and display the addresses and resolutions of vandalism incidents in 2015:
-val van2015 = spark.sql("_______________________________________")
+
+`val van2015 = spark.sql("_______________________________________")`
+
 Try creating other functions. For example, a function that extracts the month, and use this to see which
 month in 2014 had the most incidents.
 
 ## Lab 3.4 Analyze Data Using UDFs and Queries
 Estimated time to complete: 30 minutes
+
+<span style="color:red;">Solution File: </span> `Lab3.4.txt`
 
 Now that you have explored DataFrames and created simple user-defined functions, build a standalone
 application using DataFrames. High-level steps are listed below:
