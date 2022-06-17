@@ -17,6 +17,9 @@ You can access jupyter lab at `http://<lab-environment>/lab/workspaces/lab10`
 
 <h4><span style="color:red;">Lab 6.5a: Load and Inspect Data Using the Spark Shell</span></h4>
 
+### Solution:
+https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/3725077552805656/3440765705718910/7605652522337601/latest.html
+
 Estimated time to complete: 20 minutes
 
 1. Launch the Spark interactive shell, if it is not already running `spark-shell`
