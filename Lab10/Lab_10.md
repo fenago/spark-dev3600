@@ -44,7 +44,7 @@ val userSchema = new StructType().add("resid", "string").add("date",
 
 ```
 val csvDF = spark.read.format("csv").option("header",
-"false").schema(userSchema).load("/home/jovyan/work/spark-dev3600/data/sensordata.csv")
+"false").schema(userSchema).load("dbfs:/FileStore/shared_uploads/ernesto@ernesto.net/sensordata.csv")
 ```
 
 5. View the data. Retrieve the first few rows of the dataframe:
