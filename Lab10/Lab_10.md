@@ -24,6 +24,7 @@ Estimated time to complete: 20 minutes
 
 ```
 import org.apache.spark.sql.types.StructType
+import org.apache.spark.sql.functions._
 ```
 
 NOTE: A sparkSession object, which is the entry point for spark, is instantiated on its own.
@@ -59,7 +60,7 @@ csvDF.count()
 7. Create an alert DF for when the PSI is low, and print some results:
 
 ```
-val sensorDF = csvDF.filter(col("psi")<0.5)
+val sensorDF = csvDF.filter(csvDF("psi")<0.5)
 ```
 
 8. Print the schema, and show the first 20 rows of the DataFrame:
@@ -72,7 +73,7 @@ sensorDF.take(20).foreach(println)
 average PSI:
 
 ```
-csvDF.groupBy("resid", "date").agg(avg(col("psi"))).show()
+csvDF.groupBy("resid", "date").agg(avg(csvDF("psi"))).show()
 ```
 
 10. Register sensorDF as a temporary table that you can query:
@@ -111,7 +112,7 @@ val userSchema = new StructType().add("resid", "string").add("date",
 
 6. Next, create an input stream:
 ```
-val sensorCsvDF = spark.readStream.option("sep", ",").schema(userSchema).csv("/home/jovyan/work/spark-dev3600/stream/")
+val sensorCsvDF = spark.readStream.option("sep", ",").schema(userSchema).csv("dbfs:/FileStore/shared_uploads/ernesto@ernesto.net/")
 ```
 
 7. Finally, use the writeStream.format("console").start()method to display the
@@ -133,7 +134,7 @@ stream:
 ```
 query.awaitTermination()
 ```
-9. From the UNIX Window, copy sensordata.csv to the stream directory you created. This is
+9. **SKIP IF YOU ARE ON A NOTEBOOK** From the UNIX Window, copy sensordata.csv to the stream directory you created. This is
 the directory from which the streaming application will read. Be sure to specify the correct paths
 to the sensordata.csv file and the stream directory, if yours are different:
 
